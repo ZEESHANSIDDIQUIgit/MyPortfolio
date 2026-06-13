@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muhammad Zeeshan Siddiqui &mdash; Software Engineer & CS Student</title>
+  <meta name="description" content="Portfolio of Muhammad Zeeshan Siddiqui, CS Student at SSUET, highlighting Web Development, Python, AI/ML Foundations, and React Native.">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Custom Cursor Elements -->
+  <div class="custom-cursor-dot" id="cursor-dot"></div>
+  <div class="custom-cursor-follower" id="cursor-follower"></div>
+
+  <!-- Ambient Interactive Background -->
+  <canvas id="ambient-canvas"></canvas>
+
+  <!-- Sticky Glass Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#home" class="logo cursor-interactive">
+        <span>ZEESHAN</span><span class="logo-dot"></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#home" class="nav-link cursor-interactive active">Home</a></li>
+        <li><a href="#about" class="nav-link cursor-interactive">About</a></li>
+        <li><a href="#projects" class="nav-link cursor-interactive">Projects</a></li>
+        <li><a href="#experience" class="nav-link cursor-interactive">Education</a></li>
+        <li><a href="#skills" class="nav-link cursor-interactive">Skills</a></li>
+        <li><a href="#contact" class="nav-link cursor-interactive">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content reveal">
+        <div class="availability-badge">
+          <span class="badge-dot"></span>
+          <span>Open to Software Internships & Projects</span>
+        </div>
+        <h1><span id="typed-text"></span><span class="cursor-blink">|</span></h1>
+        <p>I am a Computer Science student at SSUET, focusing on full-stack web applications, React Native mobile solutions, and building foundations in AI and Machine Learning.</p>
+        <div class="hero-ctas">
+          <a href="#projects" class="btn btn-primary cursor-interactive">View Work</a>
+          <a href="#contact" class="btn btn-secondary cursor-interactive">Let's Connect</a>
+        </div>
+      </div>
+      <div class="hero-visual reveal">
+        <div class="visual-sphere"></div>
+        <div class="visual-card glass-panel">
+          <div class="card-glow"></div>
+          <div class="terminal-bar">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+            <span class="terminal-title">zeeshan@portfolio ~ </span>
+          </div>
+          <div class="card-middle">
+            <p class="card-role">// CS Student & Developer</p>
+            <h3>Zeeshan Siddiqui</h3>
+            <p class="card-desc">
+              <span class="code-kw">const</span> <span class="code-var">developer</span> = {<br>
+              &nbsp;&nbsp;<span class="code-key">stack</span>: [<span class="code-str">"Node.js"</span>, <span class="code-str">"React Native"</span>],<br>
+              &nbsp;&nbsp;<span class="code-key">learning</span>: <span class="code-str">"AI / ML"</span>,<br>
+              &nbsp;&nbsp;<span class="code-key">status</span>: <span class="code-str">"open_to_work"</span><br>
+              };
+            </p>
+          </div>
+          <div class="card-bottom">
+            <div class="stat-item">
+              <span class="stat-num glow-text">4</span>
+              <span class="stat-lbl">Active Repos</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num glow-text">2028</span>
+              <span class="stat-lbl">Graduation</span>
+            </div>
+            <span class="card-status">
+              <span class="status-dot"></span> Available
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Grid Section -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="title-sub">Who I Am</span>
+        <h2>About Zeeshan.</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-left reveal">
+          <p>Hi! I'm Muhammad Zeeshan Siddiqui. Currently pursuing my Computer Science degree (Class of 2028) at Sir Syed University of Engineering and Technology (SSUET).</p>
+          <p>I am passionate about solving computational problems and writing elegant code. My technical focus ranges from full-stack web development with JavaScript and Node.js to automated scripting in Python, mobile development with React Native, and understanding deep-level AI/ML structures.</p>
+          <p>I enjoy building tools that optimize daily activities or analyze data sets to uncover hidden insights. I am always eager to learn new libraries and frameworks to refine my development skills.</p>
+        </div>
+        <div class="about-right-grid reveal">
+          <div class="info-card glass-panel">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+              <line x1="8" y1="21" x2="16" y2="21" />
+              <line x1="12" y1="17" x2="12" y2="21" />
+            </svg>
+            <div>
+              <h4>Web Engineering</h4>
+              <p>Building responsive web applications using Node.js, Express, HTML/CSS, and MySQL backends.</p>
+            </div>
+          </div>
+          <div class="info-card glass-panel">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 2 7 12 12 22 7 12 2" />
+              <polyline points="2 17 12 22 22 17" />
+              <polyline points="2 12 12 17 22 12" />
+            </svg>
+            <div>
+              <h4>AI / ML Foundations</h4>
+              <p>Exploring Generative AI, Large Language Models (LLMs), and cloud-based machine learning fundamentals.</p>
+            </div>
+          </div>
+          <div class="info-card glass-panel">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+              <line x1="12" y1="18" x2="12.01" y2="18" />
+            </svg>
+            <div>
+              <h4>React Native</h4>
+              <p>Designing modern, responsive mobile applications featuring integrated third-party APIs.</p>
+            </div>
+          </div>
+          <div class="info-card glass-panel">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+              <line x1="12" y1="22.08" x2="12" y2="12" />
+            </svg>
+            <div>
+              <h4>Automation & Scripting</h4>
+              <p>Using Python and API integrations to automate tasks, fetch information, and parse datasets.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects">
+    <div class="container">
+      <div class="projects-header reveal">
+        <div class="section-title">
+          <span class="title-sub">Featured Projects</span>
+          <h2>My GitHub Work.</h2>
+        </div>
+        <div class="filter-menu">
+          <button class="filter-btn active cursor-interactive" data-filter="all">All</button>
+          <button class="filter-btn cursor-interactive" data-filter="web">Web Dev</button>
+          <button class="filter-btn cursor-interactive" data-filter="python">Python</button>
+          <button class="filter-btn cursor-interactive" data-filter="other">Other</button>
+        </div>
+      </div>
+
+      <div class="projects-grid reveal">
+        <!-- Project 1: FINANCE-PRO -->
+        <div class="project-card cursor-interactive" data-category="web" data-project-id="finance_pro">
+          <div class="project-img-wrapper">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'><rect width='100%' height='100%' fill='%230b0b10'/><line x1='100' y1='380' x2='700' y2='380' stroke='rgba(255,255,255,0.05)' stroke-width='2'/><path d='M 100 300 L 220 220 L 340 280 L 460 140 L 580 180 L 700 80' fill='none' stroke='%236366f1' stroke-width='3'/><circle cx='460' cy='140' r='8' fill='%233b82f6' stroke='%23f8fafc' stroke-width='2'/></svg>" alt="FINANCE-PRO Preview">
+            <div class="project-overlay">
+              <div class="project-tags">
+                <span class="project-tag">Node.js</span>
+                <span class="project-tag">Express.js</span>
+                <span class="project-tag">MySQL</span>
+                <span class="project-tag">HTML5/CSS</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>FINANCE-PRO</h3>
+            <p>FinancePro is a full-stack web application designed to help users track their financial health by managing income, expenses, and monthly budgets. Built with a focus on data integrity and real-time visualization.</p>
+            <span class="project-link">
+              Read Details
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+            </span>
+          </div>
+        </div>
+
+        <!-- Project 2: Shark Voice Assistant -->
+        <div class="project-card cursor-interactive" data-category="python" data-project-id="shark_assistant">
+          <div class="project-img-wrapper">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'><rect width='100%' height='100%' fill='%230b0b10'/><circle cx='400' cy='250' r='100' fill='none' stroke='%233b82f6' stroke-width='2' stroke-dasharray='10 5'/><path d='M 350 250 Q 400 150 450 250 T 550 250' fill='none' stroke='%236366f1' stroke-width='3'/><circle cx='400' cy='250' r='10' fill='%236366f1'/></svg>" alt="Shark Voice Assistant Preview">
+            <div class="project-overlay">
+              <div class="project-tags">
+                <span class="project-tag">Python</span>
+                <span class="project-tag">SpeechRecognition</span>
+                <span class="project-tag">APIs</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>"Shark" Assistant</h3>
+            <p>This is a virtual assistant named "SHARK" which can do basic automated tasks like opening different websites, telling jokes, fetching news, and running climate widgets using Python script controllers.</p>
+            <span class="project-link">
+              Read Details
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+            </span>
+          </div>
+        </div>
+
+        <!-- Project 3: QR Based Library System -->
+        <div class="project-card cursor-interactive" data-category="web" data-project-id="qr_library">
+          <div class="project-img-wrapper">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'><rect width='100%' height='100%' fill='%230b0b10'/><rect x='300' y='150' width='200' height='200' rx='10' fill='none' stroke='%236366f1' stroke-width='2'/><rect x='340' y='190' width='40' height='40' fill='%233b82f6'/><rect x='420' y='190' width='40' height='40' fill='%23f8fafc'/><rect x='340' y='270' width='40' height='40' fill='%23f8fafc'/><rect x='420' y='270' width='40' height='40' fill='%236366f1'/></svg>" alt="QR Library Management System Preview">
+            <div class="project-overlay">
+              <div class="project-tags">
+                <span class="project-tag">Node.js</span>
+                <span class="project-tag">Express.js</span>
+                <span class="project-tag">MySQL</span>
+                <span class="project-tag">QR Code API</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>QR Library System</h3>
+            <p>A full-stack, QR-code based library management system featuring student self-issue/return workflows, an active loan tracking dashboard with real-time fine calculation, and administrative metrics control panels.</p>
+            <span class="project-link">
+              Read Details
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+            </span>
+          </div>
+        </div>
+
+        <!-- Project 4: Profile Repo -->
+        <div class="project-card cursor-interactive" data-category="other" data-project-id="profile_repo">
+          <div class="project-img-wrapper">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'><rect width='100%' height='100%' fill='%230b0b10'/><path d='M 350 200 L 450 200 L 450 300 L 350 300 Z' fill='none' stroke='%236366f1' stroke-width='1.5'/><circle cx='400' cy='250' r='5' fill='%233b82f6'/></svg>" alt="ZEESHANSIDDIQUIgit Profile Hub Preview">
+            <div class="project-overlay">
+              <div class="project-tags">
+                <span class="project-tag">Markdown</span>
+                <span class="project-tag">Git/GitHub</span>
+                <span class="project-tag">Profile Hub</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>ZEESHANSIDDIQUIgit</h3>
+            <p>Your open-source personal hub containing active markdown statistics, automation workflow tokens, active repository listings, and profile metadata configurations.</p>
+            <span class="project-link">
+              Read Details
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Education & Journey Section -->
+  <section id="experience" class="experience">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="title-sub">Academic Path</span>
+        <h2>Education Timeline.</h2>
+      </div>
+
+      <div class="timeline reveal">
+        <div class="timeline-glow-line" id="timeline-glow"></div>
+
+        <!-- Timeline 1: University -->
+        <div class="timeline-item reveal" data-item="0">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content glass-panel">
+            <span class="timeline-date">2024 &mdash; 2028 (Expected)</span>
+            <h3>Bachelor of Science in Computer Science</h3>
+            <span class="timeline-company">Sir Syed University of Engineering and Technology (SSUET), Karachi</span>
+            <p>Focusing on foundational software engineering concepts, database systems design, structures and algorithms, and neural networks. Actively building projects and participating in programming hubs.</p>
+          </div>
+        </div>
+
+        <!-- Timeline 2: Fullstack & App Projects -->
+        <div class="timeline-item reveal" data-item="1">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content glass-panel">
+            <span class="timeline-date">2023 &mdash; Present</span>
+            <h3>Self-Directed Developer</h3>
+            <span class="timeline-company">GitHub Open Source Community</span>
+            <p>Writing and releasing open-source repositories. Specializing in Python OS automations, fullstack dashboard utilities (Node.js/Express/MySQL), and lightweight utility scripts.</p>
+          </div>
+        </div>
+
+        <!-- Timeline 3: Foundations and AI research -->
+        <div class="timeline-item reveal" data-item="2">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content glass-panel">
+            <span class="timeline-date">2022 &mdash; 2023</span>
+            <h3>Technical Exploration</h3>
+            <span class="timeline-company">Online Learning Platforms (AWS / Big Data)</span>
+            <p>Built projects studying core data analytics mechanisms. Explored cloud architectures (AWS fundamentals), big data storage structures, and baseline concepts for machine learning pipelines.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Grid Section -->
+  <section id="skills" class="skills">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="title-sub">Technical Depth</span>
+        <h2>My Skillset.</h2>
+      </div>
+
+      <div class="skills-grid reveal">
+        <!-- Tech Stack -->
+        <div class="skills-category glass-panel" style="padding: 3rem;">
+          <h3>Development Stack</h3>
+          <div class="skills-list">
+            <div class="skill-bar-wrapper">
+              <div class="skill-info">
+                <span class="skill-name">Python / C++ / C#</span>
+                <span class="skill-percent" data-target="90">0%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" data-width="90%"></div>
+              </div>
+            </div>
+            <div class="skill-bar-wrapper">
+              <div class="skill-info">
+                <span class="skill-name">JavaScript (Node.js, Express.js)</span>
+                <span class="skill-percent" data-target="85">0%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" data-width="85%"></div>
+              </div>
+            </div>
+            <div class="skill-bar-wrapper">
+              <div class="skill-info">
+                <span class="skill-name">MySQL & Database Design</span>
+                <span class="skill-percent" data-target="80">0%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" data-width="80%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Design & Concepts Stack -->
+        <div class="skills-category glass-panel" style="padding: 3rem;">
+          <h3>Frameworks & Concepts</h3>
+          <div class="skills-list">
+            <div class="skill-bar-wrapper">
+              <div class="skill-info">
+                <span class="skill-name">React Native (Mobile Development)</span>
+                <span class="skill-percent" data-target="75">0%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" data-width="75%"></div>
+              </div>
+            </div>
+            <div class="skill-bar-wrapper">
+              <div class="skill-info">
+                <span class="skill-name">AI / ML Concepts & LLM Basics</span>
+                <span class="skill-percent" data-target="80">0%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" data-width="80%"></div>
+              </div>
+            </div>
+            <div class="skill-bar-wrapper">
+              <div class="skill-info">
+                <span class="skill-name">Git, GitHub & Version Control</span>
+                <span class="skill-percent" data-target="85">0%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" data-width="85%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Grid Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="title-sub">Say Hello</span>
+        <h2>Contact Me.</h2>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <p>If you have an internship opportunity, a project to collaborate on, or just want to chat about AI and web tech, feel free to get in touch!</p>
+          
+          <div class="contact-card">
+            <div class="contact-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </div>
+            <div class="contact-card-info">
+              <h4>Write an Email</h4>
+              <p>mzeeshancs8990@gmail.com</p>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </div>
+            <div class="contact-card-info">
+              <h4>Current Location</h4>
+              <p>Karachi, Pakistan</p>
+            </div>
+          </div>
+
+          <!-- Social Shortcuts -->
+          <div class="social-links">
+            <a href="https://github.com/ZEESHANSIDDIQUIgit" class="social-btn cursor-interactive" aria-label="GitHub" target="_blank">
+              <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/m-zeeshan-siddiqui/" class="social-btn cursor-interactive" aria-label="LinkedIn" target="_blank">
+              <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <form class="contact-form glass-panel reveal" id="contact-form" autocomplete="off">
+          <div class="form-row">
+            <div class="form-group">
+              <input type="text" id="name" class="form-input cursor-interactive" placeholder=" " required>
+              <label for="name" class="form-label">Full Name</label>
+            </div>
+            <div class="form-group">
+              <input type="email" id="email" class="form-input cursor-interactive" placeholder=" " required>
+              <label for="email" class="form-label">Email Address</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="text" id="subject" class="form-input cursor-interactive" placeholder=" ">
+            <label for="subject" class="form-label">Subject</label>
+          </div>
+          <div class="form-group">
+            <textarea id="message" class="form-input cursor-interactive" placeholder=" " required></textarea>
+            <label for="message" class="form-label">Your Message</label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-submit cursor-interactive" id="submit-btn">
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Footer -->
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-logo">
+        ZEESHAN<span class="logo-dot"></span>
+      </div>
+      <div class="copyright">
+        &copy; 2026 Muhammad Zeeshan Siddiqui. Handcrafted with precision.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Project Dialog Overlay -->
+  <div class="modal-overlay" id="project-modal">
+    <div class="modal-window">
+      <button class="modal-close-btn cursor-interactive" id="modal-close">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <img src="" alt="Project Hero Image" class="modal-hero-img" id="modal-img">
+      <div class="modal-body">
+        <div class="modal-header-meta">
+          <div class="modal-header-left">
+            <h2 id="modal-title">Project Name</h2>
+            <div class="project-tags" id="modal-tags">
+              <!-- JS-Injected Tags -->
+            </div>
+          </div>
+        </div>
+        
+        <div class="modal-details-grid">
+          <div class="meta-col">
+            <span class="meta-col-label">Category</span>
+            <span class="meta-col-value" id="modal-meta-category">WebGL Simulation</span>
+          </div>
+          <div class="meta-col">
+            <span class="meta-col-label">Tech Stack</span>
+            <span class="meta-col-value" id="modal-meta-role">Vanilla TS / GLSL</span>
+          </div>
+          <div class="meta-col">
+            <span class="meta-col-label">Duration</span>
+            <span class="meta-col-value" id="modal-meta-duration">4 Weeks</span>
+          </div>
+        </div>
+
+        <div class="modal-description" id="modal-description-content">
+          <!-- JS-Injected Paragraphs -->
+        </div>
+
+        <div class="modal-actions">
+          <a href="#" class="btn btn-primary cursor-interactive" target="_blank" id="modal-live-link">View Repository</a>
+          <button class="btn btn-secondary cursor-interactive" id="modal-back-btn">Go Back</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Form Success Toast -->
+  <div class="submit-success-toast" id="success-toast">
+    <div class="toast-icon">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+    </div>
+    <div class="toast-text">
+      <h4 style="font-size: 0.95rem; margin: 0;">Message Sent!</h4>
+      <p style="font-size: 0.8rem; margin: 0; color: var(--text-muted);">Thank you, Zeeshan will respond shortly.</p>
+    </div>
+  </div>
+
+  <!-- JavaScript Modules -->
+  <script src="script.js"></script>
+</body>
+</html>
