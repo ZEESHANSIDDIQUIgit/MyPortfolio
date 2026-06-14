@@ -43,8 +43,10 @@ html {
 
 body { overflow-x: hidden; line-height: 1.6; cursor: none; }
 
+/* FIXED: Added -webkit-tap-highlight-color to remove the grey highlight on mobile tap */
 a, button, input, textarea, select, [role="button"], .cursor-interactive, .project-card {
   cursor: none !important;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body.modal-open { overflow: hidden; padding-right: 8px; }
@@ -130,10 +132,11 @@ p { color: var(--text-muted); font-size: 1.05rem; user-select: text; }
 }
 .navbar.scrolled .nav-container { height: 68px; }
 
-/* ── FIX 2: Logo constrained width so it never stretches ── */
+/* ── Logo constrained width so it never stretches ── */
 .logo {
   flex-shrink: 0;
   text-decoration: none;
+  -webkit-tap-highlight-color: transparent; /* FIXED: Prevent touch grey background on mobile */
 }
 .logo-monogram {
   width: 44px;
@@ -384,7 +387,7 @@ p { color: var(--text-muted); font-size: 1.05rem; user-select: text; }
 
 .project-info { padding: 2rem; display: flex; flex-direction: column; flex-grow: 1; }
 
-/* FIX 1: Repo name never clips — clamp font-size, allow wrap */
+/* Repo name never clips — clamp font-size, allow wrap */
 .project-info h3 {
   font-size: clamp(1rem, 2.5vw, 1.35rem);
   margin-bottom: 0.5rem;
@@ -520,9 +523,7 @@ footer { border-top: 1px solid var(--border-color); padding: 3rem 0; background:
 .cursor-blink { display: inline-block; color: var(--accent-primary); font-weight: 400; animation: blink 1s step-end infinite; }
 @keyframes blink { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
 
-/* ────────────────────────────────────────────────────────────────────
-   HAMBURGER — FIX 3: Simplified transitions, no competing origins
-──────────────────────────────────────────────────────────────────── */
+/* ── Hamburger ── */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -534,7 +535,6 @@ footer { border-top: 1px solid var(--border-color); padding: 3rem 0; background:
   padding: 0;
   cursor: pointer;
   z-index: 200; flex-shrink: 0;
-  /* No transition on the button itself — only lines animate */
 }
 .ham-line {
   display: block;
@@ -542,7 +542,6 @@ footer { border-top: 1px solid var(--border-color); padding: 3rem 0; background:
   background: var(--text-main);
   border-radius: 2px;
   width: 24px;
-  /* Single unified transition — no competing transform-origins */
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
               opacity   0.25s ease,
               background 0.3s ease;
@@ -550,7 +549,6 @@ footer { border-top: 1px solid var(--border-color); padding: 3rem 0; background:
 }
 .hamburger:hover .ham-line { background: var(--accent-primary); }
 
-/* Open state — pure translate+rotate from center, no width changes */
 .hamburger.open .ham-line:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
 }
@@ -562,16 +560,13 @@ footer { border-top: 1px solid var(--border-color); padding: 3rem 0; background:
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* ────────────────────────────────────────────────────────────────────
-   MOBILE MENU OVERLAY
-──────────────────────────────────────────────────────────────────── */
+/* ── Mobile Menu Overlay ── */
 .mobile-menu-overlay {
   position: fixed; inset: 0; z-index: 150;
   background: rgba(7,7,10,0.97);
   backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
   display: flex; align-items: center; justify-content: center;
   opacity: 0; pointer-events: none;
-  /* FIX 3: Single property transition, no lag */
   transition: opacity 0.3s ease;
   will-change: opacity;
 }
@@ -624,8 +619,13 @@ footer { border-top: 1px solid var(--border-color); padding: 3rem 0; background:
   /* ---- Cursor: restore native on touch devices ---- */
   html, body { cursor: auto; }
   #cursor-canvas { display: none; }
+  
+  /* FIXED: Remove grey highlight on touch for mobile links/buttons */
   a, button, input, textarea, select,
-  [role="button"], .cursor-interactive, .project-card { cursor: pointer !important; }
+  [role="button"], .cursor-interactive, .project-card { 
+    cursor: pointer !important; 
+    -webkit-tap-highlight-color: transparent;
+  }
 
   /* ---- Navbar ---- */
   .nav-links { display: none !important; }
@@ -732,9 +732,12 @@ footer { border-top: 1px solid var(--border-color); padding: 3rem 0; background:
   .btn { padding: 0.85rem 1.5rem; font-size: 0.88rem; }
   .mobile-nav-link { font-size: 1.4rem; padding: 0.75rem 1.5rem; }
   .about-right-grid { grid-template-columns: 1fr; }
+  
+  /* FIXED: Smaller constrained logo sizes for extra-small screens */
   .logo { width: 36px; height: 36px; }
   .logo-monogram { width: 36px; height: 36px; }
   .logo-monogram svg { width: 36px !important; height: 36px !important; }
+  
   .nav-container { height: 62px; }
   .modal-details-grid { grid-template-columns: 1fr; }
   .filter-menu { padding: 0.3rem; }
