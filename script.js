@@ -440,26 +440,45 @@ window.addEventListener("keydown", (e) => {
 
 /* 
    ------------------------------------------------------------------------
-   8. CONTACT FORM
+   8. CONTACT FORM — submits to Formspree (real email delivery)
    ------------------------------------------------------------------------
 */
 const contactForm = document.getElementById("contact-form");
 const submitBtn = document.getElementById("submit-btn");
 const successToast = document.getElementById("success-toast");
+const errorToast = document.getElementById("error-toast");
 
-contactForm.addEventListener("submit", (e) => {
+contactForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   submitBtn.disabled = true;
   submitBtn.textContent = "Transmitting Message...";
   submitBtn.style.opacity = "0.7";
-  setTimeout(() => {
-    successToast.classList.add("active");
-    contactForm.reset();
+
+  const formData = new FormData(contactForm);
+
+  try {
+    const response = await fetch(contactForm.action, {
+      method: "POST",
+      body: formData,
+      headers: { "Accept": "application/json" }
+    });
+
+    if (response.ok) {
+      successToast.classList.add("active");
+      contactForm.reset();
+      setTimeout(() => successToast.classList.remove("active"), 4000);
+    } else {
+      errorToast.classList.add("active");
+      setTimeout(() => errorToast.classList.remove("active"), 4000);
+    }
+  } catch (err) {
+    errorToast.classList.add("active");
+    setTimeout(() => errorToast.classList.remove("active"), 4000);
+  } finally {
     submitBtn.disabled = false;
     submitBtn.textContent = "Send Message";
     submitBtn.style.opacity = "1";
-    setTimeout(() => successToast.classList.remove("active"), 4000);
-  }, 1800);
+  }
 });
 
 /* 

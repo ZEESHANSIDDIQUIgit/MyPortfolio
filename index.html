@@ -289,28 +289,28 @@
         <div class="timeline-item reveal" data-item="0">
           <div class="timeline-dot"></div>
           <div class="timeline-content glass-panel">
-            <span class="timeline-date">2024 &mdash; 2028 (Expected)</span>
+            <span class="timeline-date">Oct 2024 &mdash; Oct 2028 (Expected)</span>
             <h3>Bachelor of Science in Computer Science</h3>
             <span class="timeline-company">Sir Syed University of Engineering and Technology (SSUET), Karachi</span>
-            <p>Focusing on foundational software engineering concepts, database systems design, structures and algorithms, and neural networks. Actively building projects and participating in programming hubs.</p>
+            <p>Pursuing a BS in Computer Science with a focus on software engineering fundamentals, database systems, data structures and algorithms, and core AI/ML concepts, alongside hands-on project development.</p>
           </div>
         </div>
         <div class="timeline-item reveal" data-item="1">
           <div class="timeline-dot"></div>
           <div class="timeline-content glass-panel">
-            <span class="timeline-date">2023 &mdash; Present</span>
-            <h3>Self-Directed Developer</h3>
-            <span class="timeline-company">GitHub Open Source Community</span>
-            <p>Writing and releasing open-source repositories. Specializing in Python OS automations, fullstack dashboard utilities (Node.js/Express/MySQL), and lightweight utility scripts.</p>
+            <span class="timeline-date">2022 &mdash; 2024</span>
+            <h3>Intermediate &mdash; Computer Science</h3>
+            <span class="timeline-company">Government Degree College Gulshan, Karachi</span>
+            <p>Completed Intermediate studies with Computer Science, building a strong base in programming logic, mathematics, and computing fundamentals that shaped my path toward software development.</p>
           </div>
         </div>
         <div class="timeline-item reveal" data-item="2">
           <div class="timeline-dot"></div>
           <div class="timeline-content glass-panel">
-            <span class="timeline-date">2022 &mdash; 2023</span>
-            <h3>Technical Exploration</h3>
-            <span class="timeline-company">Online Learning Platforms (AWS / Big Data)</span>
-            <p>Built projects studying core data analytics mechanisms. Explored cloud architectures (AWS fundamentals), big data storage structures, and baseline concepts for machine learning pipelines.</p>
+            <span class="timeline-date">Aug 2020 &mdash; Aug 2022</span>
+            <h3>Matriculation &mdash; Computer Science</h3>
+            <span class="timeline-company">Happy Home School, Karachi</span>
+            <p>Completed Matriculation with a focus on Computer Science, where I was first introduced to programming concepts and developed an early interest in technology and problem-solving.</p>
           </div>
         </div>
       </div>
@@ -413,23 +413,23 @@
           </div>
         </div>
 
-        <form class="contact-form glass-panel reveal" id="contact-form" autocomplete="off">
+        <form class="contact-form glass-panel reveal" id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" autocomplete="off">
           <div class="form-row">
             <div class="form-group">
-              <input type="text" id="name" class="form-input cursor-interactive" placeholder=" " required>
+              <input type="text" id="name" name="name" class="form-input cursor-interactive" placeholder=" " required>
               <label for="name" class="form-label">Full Name</label>
             </div>
             <div class="form-group">
-              <input type="email" id="email" class="form-input cursor-interactive" placeholder=" " required>
+              <input type="email" id="email" name="email" class="form-input cursor-interactive" placeholder=" " required>
               <label for="email" class="form-label">Email Address</label>
             </div>
           </div>
           <div class="form-group">
-            <input type="text" id="subject" class="form-input cursor-interactive" placeholder=" ">
+            <input type="text" id="subject" name="subject" class="form-input cursor-interactive" placeholder=" ">
             <label for="subject" class="form-label">Subject</label>
           </div>
           <div class="form-group">
-            <textarea id="message" class="form-input cursor-interactive" placeholder=" " required></textarea>
+            <textarea id="message" name="message" class="form-input cursor-interactive" placeholder=" " required></textarea>
             <label for="message" class="form-label">Your Message</label>
           </div>
           <button type="submit" class="btn btn-primary btn-submit cursor-interactive" id="submit-btn">Send Message</button>
@@ -441,20 +441,23 @@
   <!-- Footer -->
   <footer>
     <div class="container footer-content">
-      <div class="footer-logo">
-        <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="44" height="44" rx="12" fill="url(#footerGrad)"/>
-          <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle"
-            font-family="'Syne', sans-serif" font-weight="800" font-size="14"
-            fill="white" letter-spacing="1">MZS</text>
-          <defs>
-            <linearGradient id="footerGrad" x1="0" y1="0" x2="44" y2="44" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#6366f1"/>
-              <stop offset="1" stop-color="#3b82f6"/>
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
+      <a href="#home" class="footer-brand cursor-interactive">
+        <div class="footer-logo">
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="44" height="44" rx="12" fill="url(#footerGrad)"/>
+            <text x="22" y="22" dominant-baseline="central" text-anchor="middle"
+              font-family="'Syne', sans-serif" font-weight="800" font-size="13"
+              fill="white" letter-spacing="1.5">MZS</text>
+            <defs>
+              <linearGradient id="footerGrad" x1="0" y1="0" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#6366f1"/>
+                <stop offset="1" stop-color="#3b82f6"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="footer-name">Zeeshan Siddiqui</span>
+      </a>
       <div class="copyright">&copy; 2026 Muhammad Zeeshan Siddiqui. Handcrafted with precision.</div>
     </div>
   </footer>
@@ -495,6 +498,17 @@
     <div class="toast-text">
       <h4 style="font-size: 0.95rem; margin: 0;">Message Sent!</h4>
       <p style="font-size: 0.8rem; margin: 0; color: var(--text-muted);">Thank you, Zeeshan will respond shortly.</p>
+    </div>
+  </div>
+
+  <!-- Error Toast -->
+  <div class="submit-error-toast" id="error-toast">
+    <div class="toast-icon toast-icon-error">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+    </div>
+    <div class="toast-text">
+      <h4 style="font-size: 0.95rem; margin: 0;">Something went wrong</h4>
+      <p style="font-size: 0.8rem; margin: 0; color: var(--text-muted);">Please try again or email me directly.</p>
     </div>
   </div>
 
