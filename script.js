@@ -62,68 +62,135 @@ const projectData = {
 
 /* 
    ------------------------------------------------------------------------
-   1. CUSTOM CURSOR TRAIL PHYSICS
+   1. PREMIUM CANVAS CURSOR — desktop only
    ------------------------------------------------------------------------
 */
-const cursorDot = document.getElementById("cursor-dot");
-const cursorFollower = document.getElementById("cursor-follower");
+const isTouchDevice = () => window.matchMedia("(hover: none) and (pointer: coarse)").matches;
 
-let mouseX = 0;
-let mouseY = 0;
-let followerX = 0;
-let followerY = 0;
+const cursorCanvas = document.getElementById("cursor-canvas");
+const cursorCtx = cursorCanvas.getContext("2d");
 
-// Update mouse target coordinates
-window.addEventListener("mousemove", (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  
-  // Instantly place the small dot
-  cursorDot.style.left = `${mouseX}px`;
-  cursorDot.style.top = `${mouseY}px`;
-});
-
-// Follower lag animation using linear interpolation (lerp)
-function animateCursor() {
-  const lerpFactor = 0.15; // Smoothness factor
-  
-  followerX += (mouseX - followerX) * lerpFactor;
-  followerY += (mouseY - followerY) * lerpFactor;
-  
-  cursorFollower.style.left = `${followerX}px`;
-  cursorFollower.style.top = `${followerY}px`;
-  
-  requestAnimationFrame(animateCursor);
-}
-animateCursor();
-
-// Set cursor hover state classes on interactive elements
-function initCursorInteractions() {
-  const interactives = document.querySelectorAll(".cursor-interactive, a, button, select, textarea, input, .project-card");
-  
-  interactives.forEach(el => {
-    el.addEventListener("mouseenter", () => {
-      document.body.classList.add("cursor-hover");
-    });
-    
-    el.addEventListener("mouseleave", () => {
-      document.body.classList.remove("cursor-hover");
-    });
+if (!isTouchDevice()) {
+  cursorCanvas.width = window.innerWidth;
+  cursorCanvas.height = window.innerHeight;
+  window.addEventListener("resize", () => {
+    cursorCanvas.width = window.innerWidth;
+    cursorCanvas.height = window.innerHeight;
   });
-}
-initCursorInteractions();
 
+  let cur = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+  let ring = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+  let isHovering = false;
+  let isVisible = false;
+
+  const trail = [];
+  const TRAIL_LENGTH = 18;
+  for (let i = 0; i < TRAIL_LENGTH; i++) {
+    trail.push({ x: cur.x, y: cur.y });
+  }
+
+  window.addEventListener("mousemove", (e) => {
+    cur.x = e.clientX;
+    cur.y = e.clientY;
+    isVisible = true;
+  });
+  window.addEventListener("mouseleave", () => { isVisible = false; });
+
+  function drawCursor() {
+    cursorCtx.clearRect(0, 0, cursorCanvas.width, cursorCanvas.height);
+
+    if (!isVisible) { requestAnimationFrame(drawCursor); return; }
+
+    const ease = isHovering ? 0.12 : 0.18;
+    ring.x += (cur.x - ring.x) * ease;
+    ring.y += (cur.y - ring.y) * ease;
+
+    trail.unshift({ x: cur.x, y: cur.y });
+    if (trail.length > TRAIL_LENGTH) trail.pop();
+
+    for (let i = trail.length - 1; i > 0; i--) {
+      const t = i / trail.length;
+      const alpha = (1 - t) * 0.35;
+      const size = (1 - t) * (isHovering ? 5 : 3.5);
+      const grad = cursorCtx.createRadialGradient(trail[i].x, trail[i].y, 0, trail[i].x, trail[i].y, size);
+      grad.addColorStop(0, `rgba(99,102,241,${alpha})`);
+      grad.addColorStop(1, `rgba(99,102,241,0)`);
+      cursorCtx.beginPath();
+      cursorCtx.arc(trail[i].x, trail[i].y, size, 0, Math.PI * 2);
+      cursorCtx.fillStyle = grad;
+      cursorCtx.fill();
+    }
+
+    const ringRadius = isHovering ? 22 : 16;
+    const ringAlpha = isHovering ? 0.9 : 0.6;
+    const time = Date.now() * 0.002;
+
+    cursorCtx.save();
+    cursorCtx.translate(ring.x, ring.y);
+    cursorCtx.rotate(time);
+    cursorCtx.beginPath();
+    cursorCtx.arc(0, 0, ringRadius, 0, Math.PI * 1.7);
+    cursorCtx.strokeStyle = `rgba(99,102,241,${ringAlpha})`;
+    cursorCtx.lineWidth = isHovering ? 2 : 1.5;
+    cursorCtx.lineCap = "round";
+    cursorCtx.stroke();
+    cursorCtx.restore();
+
+    cursorCtx.save();
+    cursorCtx.translate(ring.x, ring.y);
+    cursorCtx.rotate(-time * 0.6);
+    cursorCtx.beginPath();
+    cursorCtx.arc(0, 0, ringRadius, 0, Math.PI * 0.6);
+    cursorCtx.strokeStyle = `rgba(165,180,252,${ringAlpha * 0.5})`;
+    cursorCtx.lineWidth = 1;
+    cursorCtx.lineCap = "round";
+    cursorCtx.stroke();
+    cursorCtx.restore();
+
+    const glow = cursorCtx.createRadialGradient(ring.x, ring.y, 0, ring.x, ring.y, ringRadius + 10);
+    glow.addColorStop(0, `rgba(99,102,241,${isHovering ? 0.12 : 0.06})`);
+    glow.addColorStop(1, "rgba(99,102,241,0)");
+    cursorCtx.beginPath();
+    cursorCtx.arc(ring.x, ring.y, ringRadius + 10, 0, Math.PI * 2);
+    cursorCtx.fillStyle = glow;
+    cursorCtx.fill();
+
+    const dotGrad = cursorCtx.createRadialGradient(cur.x, cur.y, 0, cur.x, cur.y, isHovering ? 5 : 3);
+    dotGrad.addColorStop(0, "rgba(255,255,255,1)");
+    dotGrad.addColorStop(0.4, "rgba(165,180,252,0.9)");
+    dotGrad.addColorStop(1, "rgba(99,102,241,0)");
+    cursorCtx.beginPath();
+    cursorCtx.arc(cur.x, cur.y, isHovering ? 5 : 3, 0, Math.PI * 2);
+    cursorCtx.fillStyle = dotGrad;
+    cursorCtx.fill();
+
+    requestAnimationFrame(drawCursor);
+  }
+  drawCursor();
+
+  function initCursorInteractions() {
+    const interactives = document.querySelectorAll(".cursor-interactive, a, button, select, textarea, input, .project-card");
+    interactives.forEach(el => {
+      el.addEventListener("mouseenter", () => { isHovering = true; });
+      el.addEventListener("mouseleave", () => { isHovering = false; });
+    });
+  }
+  initCursorInteractions();
+
+  // Re-expose so filter section can call it
+  window.initCursorInteractions = initCursorInteractions;
+}
 
 /* 
    ------------------------------------------------------------------------
-   2. AMBIENT INTERACTIVE PARTICLES (Canvas Background)
+   2. AMBIENT PARTICLES
    ------------------------------------------------------------------------
 */
 const canvas = document.getElementById("ambient-canvas");
 const ctx = canvas.getContext("2d");
 
 let particles = [];
-const particleCount = 60;
+const particleCount = isTouchDevice() ? 30 : 60;
 const connectionDistance = 120;
 let mouse = { x: null, y: null, radius: 150 };
 
@@ -134,15 +201,8 @@ function resizeCanvas() {
 resizeCanvas();
 window.addEventListener("resize", resizeCanvas);
 
-// Track mouse positioning inside canvas bounds
-window.addEventListener("mousemove", (e) => {
-  mouse.x = e.clientX;
-  mouse.y = e.clientY;
-});
-window.addEventListener("mouseleave", () => {
-  mouse.x = null;
-  mouse.y = null;
-});
+window.addEventListener("mousemove", (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+window.addEventListener("mouseleave", () => { mouse.x = null; mouse.y = null; });
 
 class Particle {
   constructor() {
@@ -155,33 +215,23 @@ class Particle {
     this.speedY = this.baseSpeedY;
     this.opacity = Math.random() * 0.4 + 0.1;
   }
-
   update() {
-    // Basic travel path
     this.x += this.speedX;
     this.y += this.speedY;
-
-    // Bounce off border limits
     if (this.x < 0 || this.x > canvas.width) this.speedX = -this.speedX;
     if (this.y < 0 || this.y > canvas.height) this.speedY = -this.speedY;
-
-    // Mouse repulsion logic
     if (mouse.x !== null && mouse.y !== null) {
       const dx = this.x - mouse.x;
       const dy = this.y - mouse.y;
       const distance = Math.sqrt(dx * dx + dy * dy);
-      
       if (distance < mouse.radius) {
         const force = (mouse.radius - distance) / mouse.radius;
         const angle = Math.atan2(dy, dx);
-        
-        // Push particles away smoothly
         this.x += Math.cos(angle) * force * 2;
         this.y += Math.sin(angle) * force * 2;
       }
     }
   }
-
   draw() {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -192,28 +242,20 @@ class Particle {
 
 function initParticles() {
   particles = [];
-  for (let i = 0; i < particleCount; i++) {
-    particles.push(new Particle());
-  }
+  for (let i = 0; i < particleCount; i++) particles.push(new Particle());
 }
 initParticles();
 
-// Animation frame execution
 function handleParticles() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  
-  // Render and calculate paths between particles
   for (let i = 0; i < particles.length; i++) {
     particles[i].update();
     particles[i].draw();
-
     for (let j = i + 1; j < particles.length; j++) {
       const dx = particles[i].x - particles[j].x;
       const dy = particles[i].y - particles[j].y;
       const distance = Math.sqrt(dx * dx + dy * dy);
-
       if (distance < connectionDistance) {
-        // Line transparency fades out as distance approaches limit
         const opacity = (1 - distance / connectionDistance) * 0.08;
         ctx.beginPath();
         ctx.strokeStyle = `rgba(99, 102, 241, ${opacity})`;
@@ -228,128 +270,86 @@ function handleParticles() {
 }
 handleParticles();
 
-
 /* 
    ------------------------------------------------------------------------
-   3. SCROLL REVEAL & NAV SCROLL ACTIONS (Intersection Observer)
+   3. SCROLL REVEAL & NAV
    ------------------------------------------------------------------------
 */
-// Set up sticky navbar modification and link highlighter
 const navbar = document.getElementById("navbar");
 const navLinks = document.querySelectorAll(".nav-links a");
 const sections = document.querySelectorAll("section");
 
 window.addEventListener("scroll", () => {
-  if (window.scrollY > 50) {
-    navbar.classList.add("scrolled");
-  } else {
-    navbar.classList.remove("scrolled");
-  }
+  navbar.classList.toggle("scrolled", window.scrollY > 50);
 
-  // Highlight active menu item based on current viewport section
   let currentSecId = "home";
   sections.forEach(sec => {
     const secTop = sec.offsetTop - 120;
-    const secHeight = sec.clientHeight;
-    if (window.scrollY >= secTop && window.scrollY < secTop + secHeight) {
+    if (window.scrollY >= secTop && window.scrollY < secTop + sec.clientHeight) {
       currentSecId = sec.getAttribute("id");
     }
   });
-
   navLinks.forEach(link => {
     link.classList.remove("active");
-    if (link.getAttribute("href") === `#${currentSecId}`) {
-      link.classList.add("active");
-    }
+    if (link.getAttribute("href") === `#${currentSecId}`) link.classList.add("active");
   });
-});
+}, { passive: true });
 
-// Scroll reveal using Intersection Observer
 const revealElements = document.querySelectorAll(".reveal");
-const revealObserver = new IntersectionObserver((entries, observer) => {
+const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add("reveal-active");
-      
-      // Skill bars trigger when skills-grid is showing
-      if (entry.target.classList.contains("skills-grid")) {
-        animateSkills();
-      }
-      
-      // Experience timeline timeline glow tracer
-      if (entry.target.classList.contains("timeline")) {
-        animateTimelineGlow();
-      }
+      if (entry.target.classList.contains("skills-grid")) animateSkills();
+      if (entry.target.classList.contains("timeline")) animateTimelineGlow();
     }
   });
 }, { threshold: 0.15 });
-
-revealElements.forEach(el => {
-  revealObserver.observe(el);
-});
-
+revealElements.forEach(el => revealObserver.observe(el));
 
 /* 
    ------------------------------------------------------------------------
-   4. PROGRESS TIMELINE GLOW LINE & DOT ACTIVE STATES
+   4. TIMELINE GLOW
    ------------------------------------------------------------------------
 */
 function animateTimelineGlow() {
   const glowLine = document.getElementById("timeline-glow");
   const timelineItems = document.querySelectorAll(".timeline-item");
-  
-  // Delay slightly for transition impact
   setTimeout(() => {
     glowLine.style.height = "100%";
-    
-    // Mark items active sequentially
     timelineItems.forEach((item, index) => {
-      setTimeout(() => {
-        item.classList.add("active");
-      }, index * 400);
+      setTimeout(() => item.classList.add("active"), index * 400);
     });
   }, 300);
 }
 
-
 /* 
    ------------------------------------------------------------------------
-   5. SKILLS MATRIX PROGRESSION BAR TRIGGERS
+   5. SKILL BARS
    ------------------------------------------------------------------------
 */
 let skillsAnimated = false;
 function animateSkills() {
-  if (skillsAnimated) return; // Prevent double trigger
+  if (skillsAnimated) return;
   skillsAnimated = true;
-  
-  const progressBars = document.querySelectorAll(".skill-bar-fill");
-  const percentTexts = document.querySelectorAll(".skill-percent");
-
-  progressBars.forEach(bar => {
-    const targetWidth = bar.getAttribute("data-width");
-    bar.style.width = targetWidth;
+  document.querySelectorAll(".skill-bar-fill").forEach(bar => {
+    bar.style.width = bar.getAttribute("data-width");
   });
-
-  percentTexts.forEach(txt => {
+  document.querySelectorAll(".skill-percent").forEach(txt => {
     const targetVal = parseInt(txt.getAttribute("data-target"), 10);
     let currentVal = 0;
-    const duration = 1500; // Match CSS speed
-    const stepTime = Math.abs(Math.floor(duration / targetVal));
-    
+    const stepTime = Math.abs(Math.floor(1500 / targetVal));
     const counter = setInterval(() => {
       currentVal++;
       txt.textContent = `${currentVal}%`;
-      if (currentVal >= targetVal) {
-        clearInterval(counter);
-      }
+      if (currentVal >= targetVal) clearInterval(counter);
     }, stepTime);
   });
 }
 
-
 /* 
    ------------------------------------------------------------------------
-   6. PORTFOLIO FILTER MENU CONTROLS
+   6. PROJECT FILTER
    ------------------------------------------------------------------------
 */
 const filterButtons = document.querySelectorAll(".filter-btn");
@@ -357,19 +357,13 @@ const projectCards = document.querySelectorAll(".project-card");
 
 filterButtons.forEach(btn => {
   btn.addEventListener("click", () => {
-    // Update active class state on filter bar
     filterButtons.forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
-
     const activeFilter = btn.getAttribute("data-filter");
-
     projectCards.forEach(card => {
       const cardCategory = card.getAttribute("data-category");
-
-      // Smooth fade transition
       card.style.opacity = "0";
       card.style.transform = "scale(0.95) translateY(10px)";
-      
       setTimeout(() => {
         if (activeFilter === "all" || cardCategory === activeFilter) {
           card.classList.remove("hidden");
@@ -382,16 +376,13 @@ filterButtons.forEach(btn => {
         }
       }, 300);
     });
-    
-    // Refresh cursor links configuration in case of DOM changes
-    setTimeout(initCursorInteractions, 400);
+    if (window.initCursorInteractions) setTimeout(window.initCursorInteractions, 400);
   });
 });
 
-
 /* 
    ------------------------------------------------------------------------
-   7. PROJECT SHOWCASE MODAL PANEL HANDLERS
+   7. PROJECT MODAL
    ------------------------------------------------------------------------
 */
 const modalOverlay = document.getElementById("project-modal");
@@ -408,67 +399,48 @@ const modalBackBtn = document.getElementById("modal-back-btn");
 
 projectCards.forEach(card => {
   card.addEventListener("click", () => {
-    const projectId = card.getAttribute("data-project-id");
-    const data = projectData[projectId];
+    const data = projectData[card.getAttribute("data-project-id")];
     if (!data) return;
-
-    // Load data properties inside modal DOM
     modalImg.src = data.img;
     modalTitle.textContent = data.title;
     modalMetaCategory.textContent = data.category;
     modalMetaDuration.textContent = data.duration;
     modalMetaRole.textContent = data.tech;
     modalLiveLink.href = data.link;
-
-    // Load tags lists
     modalTags.innerHTML = "";
-    const originalTags = card.querySelectorAll(".project-tag");
-    originalTags.forEach(tag => {
+    card.querySelectorAll(".project-tag").forEach(tag => {
       const newTag = document.createElement("span");
       newTag.className = "project-tag";
       newTag.textContent = tag.textContent;
       modalTags.appendChild(newTag);
     });
-
-    // Populate descriptions paragraphs
     modalDescContent.innerHTML = "";
     data.desc.forEach(pText => {
       const p = document.createElement("p");
       p.textContent = pText;
       modalDescContent.appendChild(p);
     });
-
-    // Render active overlay configurations
     document.body.classList.add("modal-open");
     modalOverlay.classList.add("active");
+    // Scroll modal to top
+    modalOverlay.querySelector(".modal-window").scrollTop = 0;
   });
 });
 
-// Close triggers
 function closeModalWindow() {
   modalOverlay.classList.remove("active");
   document.body.classList.remove("modal-open");
-  
-  // Clear cursor interactions hover classes
-  document.body.classList.remove("cursor-hover");
 }
-
 modalClose.addEventListener("click", closeModalWindow);
 modalBackBtn.addEventListener("click", closeModalWindow);
-modalOverlay.addEventListener("click", (e) => {
-  if (e.target === modalOverlay) closeModalWindow();
-});
-
+modalOverlay.addEventListener("click", (e) => { if (e.target === modalOverlay) closeModalWindow(); });
 window.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && modalOverlay.classList.contains("active")) {
-    closeModalWindow();
-  }
+  if (e.key === "Escape" && modalOverlay.classList.contains("active")) closeModalWindow();
 });
-
 
 /* 
    ------------------------------------------------------------------------
-   8. CONTACT FORM SIMULATED SUBMIT FLOW (Toast Notification)
+   8. CONTACT FORM
    ------------------------------------------------------------------------
 */
 const contactForm = document.getElementById("contact-form");
@@ -477,38 +449,25 @@ const successToast = document.getElementById("success-toast");
 
 contactForm.addEventListener("submit", (e) => {
   e.preventDefault();
-
-  // Highlight submitting state on CTA button
   submitBtn.disabled = true;
   submitBtn.textContent = "Transmitting Message...";
   submitBtn.style.opacity = "0.7";
-
-  // Simulate remote server transmission delay
   setTimeout(() => {
-    // Show success notification layout
     successToast.classList.add("active");
-    
-    // Reset inputs
     contactForm.reset();
     submitBtn.disabled = false;
     submitBtn.textContent = "Send Message";
     submitBtn.style.opacity = "1";
-
-    // Auto-retract notification after 4s limit
-    setTimeout(() => {
-      successToast.classList.remove("active");
-    }, 4000);
+    setTimeout(() => successToast.classList.remove("active"), 4000);
   }, 1800);
 });
 
-
 /* 
    ------------------------------------------------------------------------
-   9. HERO HEADLINE TYPEWRITER ROTATOR
+   9. TYPEWRITER
    ------------------------------------------------------------------------
 */
 const typedEl = document.getElementById("typed-text");
-
 if (typedEl) {
   const phrases = [
     { pre: "Building ", word: "Intelligent", post: " Software." },
@@ -517,26 +476,57 @@ if (typedEl) {
     { pre: "Exploring ", word: "AI", post: " Models." }
   ];
   let phraseIndex = 0;
-
   typedEl.style.transition = "opacity 0.9s ease";
 
   function renderPhrase(p) {
     typedEl.innerHTML = `${p.pre}<span class="glow-text">${p.word}</span>${p.post}`;
   }
-
   renderPhrase(phrases[0]);
 
   function cyclePhrases() {
     typedEl.style.opacity = "0";
-
     setTimeout(() => {
       phraseIndex = (phraseIndex + 1) % phrases.length;
       renderPhrase(phrases[phraseIndex]);
       typedEl.style.opacity = "1";
     }, 900);
-
     setTimeout(cyclePhrases, 5000);
   }
-
   setTimeout(cyclePhrases, 5000);
 }
+
+/* 
+   ------------------------------------------------------------------------
+   10. HAMBURGER MENU — FIX 3: single state flag, no race conditions
+   ------------------------------------------------------------------------
+*/
+const hamburger = document.getElementById("hamburger");
+const mobileOverlay = document.getElementById("mobile-overlay");
+const mobileLinks = document.querySelectorAll(".mobile-nav-link");
+
+let menuOpen = false;
+
+function openMobileMenu() {
+  menuOpen = true;
+  hamburger.classList.add("open");
+  mobileOverlay.classList.add("open");
+  document.body.classList.add("modal-open");
+}
+
+function closeMobileMenu() {
+  menuOpen = false;
+  hamburger.classList.remove("open");
+  mobileOverlay.classList.remove("open");
+  document.body.classList.remove("modal-open");
+}
+
+// FIX: use single flag instead of checking classList (avoids transition-state misfires)
+hamburger.addEventListener("click", () => {
+  if (menuOpen) { closeMobileMenu(); } else { openMobileMenu(); }
+});
+
+mobileLinks.forEach(link => link.addEventListener("click", closeMobileMenu));
+mobileOverlay.addEventListener("click", (e) => { if (e.target === mobileOverlay) closeMobileMenu(); });
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && menuOpen) closeMobileMenu();
+});
