@@ -4,6 +4,8 @@
    ========================================================================
 */
 
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 // Project Data Store for Modals
 const projectData = {
   finance_pro: {
@@ -12,7 +14,7 @@ const projectData = {
     tech: "Node.js, Express.js, MySQL, Javascript, HTML5/CSS",
     duration: "5 Weeks",
     link: "https://github.com/ZEESHANSIDDIQUIgit/FINACNEPRO-FINANCE_MANAGEMENT-SYSTEM",
-    img: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'><rect width='100%' height='100%' fill='%230b0b10'/><line x1='100' y1='380' x2='700' y2='380' stroke='rgba(255,255,255,0.05)' stroke-width='2'/><path d='M 100 300 L 220 220 L 340 280 L 460 140 L 580 180 L 700 80' fill='none' stroke='%236366f1' stroke-width='3'/><circle cx='460' cy='140' r='8' fill='%233b82f6' stroke='%23f8fafc' stroke-width='2'/></svg>",
+    img: "images/finance-pro.png",
     desc: [
       "FinancePro is a full-stack finance tracking application designed to help users budget, monitor expenses, and manage active balance sheets with a secure MySQL database.",
       "Built with a focus on data integrity, the Express.js server processes records securely using parametrized queries. The system provides immediate balance tallies based on transactions.",
@@ -25,7 +27,7 @@ const projectData = {
     tech: "Python, SpeechRecognition, Pyttsx3, Web APIs",
     duration: "4 Weeks",
     link: "https://github.com/ZEESHANSIDDIQUIgit/Basic-Voice-Assistant-",
-    img: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'><rect width='100%' height='100%' fill='%230b0b10'/><circle cx='400' cy='250' r='100' fill='none' stroke='%233b82f6' stroke-width='2' stroke-dasharray='10 5'/><path d='M 350 250 Q 400 150 450 250 T 550 250' fill='none' stroke='%236366f1' stroke-width='3'/><circle cx='400' cy='250' r='10' fill='%236366f1'/></svg>",
+    img: "images/shark-assistant.png",
     desc: [
       "A smart voice-driven assistant built with Python. Features speech recognition inputs, system action automations, online web scraping triggers, and integrations with climate and news APIs.",
       "Named 'SHARK', this assistant utilizes offline pyttsx3 speech synthetics to talk back, delivering jokes, reading current news highlights, or listing active calendar events.",
@@ -38,7 +40,7 @@ const projectData = {
     tech: "Node.js, Express.js, MySQL, QR API, Javascript",
     duration: "6 Weeks",
     link: "https://github.com/ZEESHANSIDDIQUIgit/QR-Based-Library-Management-System",
-    img: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'><rect width='100%' height='100%' fill='%230b0b10'/><rect x='300' y='150' width='200' height='200' rx='10' fill='none' stroke='%236366f1' stroke-width='2'/><rect x='340' y='190' width='40' height='40' fill='%233b82f6'/><rect x='420' y='190' width='40' height='40' fill='%23f8fafc'/><rect x='340' y='270' width='40' height='40' fill='%23f8fafc'/><rect x='420' y='270' width='40' height='40' fill='%236366f1'/></svg>",
+    img: "images/library-system.png",
     desc: [
       "A full-stack, QR-code based library management system featuring student self-issue/return workflows and real-time administrative metrics.",
       "Integrates with dynamic QR APIs to generate barcodes for books and student library passes, enabling quick scanning for issuing and returning assets.",
@@ -62,7 +64,7 @@ const projectData = {
 
 /* 
    ------------------------------------------------------------------------
-   1. PREMIUM CANVAS CURSOR — desktop only
+   1. PREMIUM CANVAS CURSOR — desktop only, skipped if reduced motion is preferred
    ------------------------------------------------------------------------
 */
 const isTouchDevice = () => window.matchMedia("(hover: none) and (pointer: coarse)").matches;
@@ -70,7 +72,7 @@ const isTouchDevice = () => window.matchMedia("(hover: none) and (pointer: coars
 const cursorCanvas = document.getElementById("cursor-canvas");
 const cursorCtx = cursorCanvas.getContext("2d");
 
-if (!isTouchDevice()) {
+if (!isTouchDevice() && !reduceMotion) {
   cursorCanvas.width = window.innerWidth;
   cursorCanvas.height = window.innerHeight;
   window.addEventListener("resize", () => {
@@ -179,11 +181,14 @@ if (!isTouchDevice()) {
 
   // Re-expose so filter section can call it
   window.initCursorInteractions = initCursorInteractions;
+} else {
+  cursorCanvas.style.display = "none";
 }
 
 /* 
    ------------------------------------------------------------------------
-   2. AMBIENT PARTICLES
+   2. AMBIENT PARTICLES — animated normally, drawn once statically if the
+      user prefers reduced motion
    ------------------------------------------------------------------------
 */
 const canvas = document.getElementById("ambient-canvas");
@@ -268,7 +273,13 @@ function handleParticles() {
   }
   requestAnimationFrame(handleParticles);
 }
-handleParticles();
+
+if (reduceMotion) {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => p.draw());
+} else {
+  handleParticles();
+}
 
 /* 
    ------------------------------------------------------------------------
@@ -483,7 +494,7 @@ contactForm.addEventListener("submit", async (e) => {
 
 /* 
    ------------------------------------------------------------------------
-   9. TYPEWRITER
+   9. TYPEWRITER (hero headline)
    ------------------------------------------------------------------------
 */
 const typedEl = document.getElementById("typed-text");
@@ -511,12 +522,69 @@ if (typedEl) {
     }, 900);
     setTimeout(cyclePhrases, 5000);
   }
-  setTimeout(cyclePhrases, 5000);
+  if (!reduceMotion) setTimeout(cyclePhrases, 5000);
 }
 
 /* 
    ------------------------------------------------------------------------
-   10. HAMBURGER MENU — FIX 3: single state flag, no race conditions
+   10. DEV CONSOLE — hero signature element: tab switching + live terminal log
+   ------------------------------------------------------------------------
+*/
+const consoleTabs = document.querySelectorAll(".console-tab");
+const consolePanels = document.querySelectorAll(".console-panel");
+
+consoleTabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    consoleTabs.forEach(t => { t.classList.remove("active"); t.setAttribute("aria-selected", "false"); });
+    consolePanels.forEach(p => p.classList.remove("active"));
+    tab.classList.add("active");
+    tab.setAttribute("aria-selected", "true");
+    const target = document.querySelector(`.console-panel[data-panel="${tab.dataset.tab}"]`);
+    if (target) target.classList.add("active");
+  });
+});
+
+const terminalLogEl = document.getElementById("console-log-text");
+if (terminalLogEl) {
+  const logLines = [
+    "npm run build",
+    "compiled successfully in 842ms",
+    "fetching repos... 4 active",
+    "status: open_to_work",
+    "loading AI/ML module..."
+  ];
+
+  if (reduceMotion) {
+    terminalLogEl.textContent = logLines[0];
+  } else {
+    let logIndex = 0;
+
+    function typeLogLine(line, onComplete) {
+      let i = 0;
+      terminalLogEl.textContent = "";
+      const typeInterval = setInterval(() => {
+        terminalLogEl.textContent += line[i];
+        i++;
+        if (i >= line.length) {
+          clearInterval(typeInterval);
+          setTimeout(onComplete, 1800);
+        }
+      }, 35);
+    }
+
+    function cycleLog() {
+      typeLogLine(logLines[logIndex], () => {
+        logIndex = (logIndex + 1) % logLines.length;
+        cycleLog();
+      });
+    }
+    cycleLog();
+  }
+}
+
+/* 
+   ------------------------------------------------------------------------
+   11. HAMBURGER MENU — single state flag, no race conditions
    ------------------------------------------------------------------------
 */
 const hamburger = document.getElementById("hamburger");
@@ -528,6 +596,7 @@ let menuOpen = false;
 function openMobileMenu() {
   menuOpen = true;
   hamburger.classList.add("open");
+  hamburger.setAttribute("aria-expanded", "true");
   mobileOverlay.classList.add("open");
   document.body.classList.add("modal-open");
 }
@@ -535,11 +604,11 @@ function openMobileMenu() {
 function closeMobileMenu() {
   menuOpen = false;
   hamburger.classList.remove("open");
+  hamburger.setAttribute("aria-expanded", "false");
   mobileOverlay.classList.remove("open");
   document.body.classList.remove("modal-open");
 }
 
-// FIX: use single flag instead of checking classList (avoids transition-state misfires)
 hamburger.addEventListener("click", () => {
   if (menuOpen) { closeMobileMenu(); } else { openMobileMenu(); }
 });

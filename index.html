@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07070a">
   <title>MZS · Portfolio</title>
   <meta name="description" content="Portfolio of Muhammad Zeeshan Siddiqui, CS Student at SSUET — Full-Stack Web, React Native, Python & AI/ML.">
   <!-- FAVICON -->
@@ -11,6 +12,9 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <a href="#home" class="skip-link">Skip to content</a>
+  <div class="bg-grid" aria-hidden="true"></div>
 
   <canvas id="cursor-canvas"></canvas>
   <canvas id="ambient-canvas"></canvas>
@@ -39,7 +43,7 @@
         <li><a href="#contact" class="nav-link cursor-interactive">Contact</a></li>
       </ul>
 
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span class="ham-line"></span>
         <span class="ham-line"></span>
         <span class="ham-line"></span>
@@ -84,25 +88,44 @@
       </div>
       <div class="hero-visual reveal">
         <div class="visual-sphere"></div>
-        <div class="visual-card glass-panel">
+        <div class="visual-card dev-console glass-panel">
           <div class="card-glow"></div>
+
           <div class="terminal-bar">
             <span class="dot dot-red"></span>
             <span class="dot dot-yellow"></span>
             <span class="dot dot-green"></span>
-            <span class="terminal-title">zeeshan@portfolio ~ </span>
+            <div class="console-tabs" role="tablist" aria-label="Developer console">
+              <button class="console-tab active" data-tab="profile" role="tab" aria-selected="true" type="button">profile.dev</button>
+              <button class="console-tab" data-tab="status" role="tab" aria-selected="false" type="button">status.json</button>
+            </div>
           </div>
-          <div class="card-middle">
+
+          <div class="console-panel active" data-panel="profile">
             <p class="card-role">// CS Student &amp; Developer</p>
             <h3>Zeeshan Siddiqui</h3>
-            <p class="card-desc">
-              <span class="code-kw">const</span> <span class="code-var">developer</span> = {<br>
-              &nbsp;&nbsp;<span class="code-key">stack</span>: [<span class="code-str">"Node.js"</span>, <span class="code-str">"React Native"</span>],<br>
-              &nbsp;&nbsp;<span class="code-key">learning</span>: <span class="code-str">"AI / ML"</span>,<br>
-              &nbsp;&nbsp;<span class="code-key">status</span>: <span class="code-str">"open_to_work"</span><br>
-              };
-            </p>
+            <pre class="card-desc"><span class="code-kw">const</span> <span class="code-var">developer</span> = {
+  <span class="code-key">stack</span>: [<span class="code-str">"Node.js"</span>, <span class="code-str">"React Native"</span>],
+  <span class="code-key">learning</span>: <span class="code-str">"AI / ML"</span>,
+  <span class="code-key">status</span>: <span class="code-str">"open_to_work"</span>
+};</pre>
           </div>
+
+          <div class="console-panel" data-panel="status">
+            <p class="card-role">// Live Status</p>
+            <pre class="card-desc"><span class="code-kw">{</span>
+  <span class="code-key">"repos"</span>: <span class="code-num">4</span>,
+  <span class="code-key">"graduation"</span>: <span class="code-num">2028</span>,
+  <span class="code-key">"university"</span>: <span class="code-str">"SSUET"</span>,
+  <span class="code-key">"focus"</span>: <span class="code-str">"full-stack + AI/ML"</span>
+<span class="code-kw">}</span></pre>
+          </div>
+
+          <div class="console-terminal">
+            <span class="terminal-prompt">$</span>
+            <span id="console-log-text" class="terminal-log" aria-hidden="true"></span><span class="terminal-cursor" aria-hidden="true">▍</span>
+          </div>
+
           <div class="card-bottom">
             <div class="stat-item">
               <span class="stat-num glow-text">4</span>
@@ -125,7 +148,7 @@
   <section id="about" class="about">
     <div class="container">
       <div class="section-title reveal">
-        <span class="title-sub">Who I Am</span>
+        <span class="title-sub">// who_i_am</span>
         <h2>About Zeeshan.</h2>
       </div>
       <div class="about-grid">
@@ -142,6 +165,7 @@
               <line x1="12" y1="17" x2="12" y2="21" />
             </svg>
             <div>
+              <span class="card-kicker">stack.web</span>
               <h4>Web Engineering</h4>
               <p>Building responsive web applications using Node.js, Express, HTML/CSS, and MySQL backends.</p>
             </div>
@@ -153,6 +177,7 @@
               <polyline points="2 12 12 17 22 12" />
             </svg>
             <div>
+              <span class="card-kicker">stack.ai_ml</span>
               <h4>AI / ML Foundations</h4>
               <p>Exploring Generative AI, Large Language Models (LLMs), and cloud-based machine learning fundamentals.</p>
             </div>
@@ -163,6 +188,7 @@
               <line x1="12" y1="18" x2="12.01" y2="18" />
             </svg>
             <div>
+              <span class="card-kicker">stack.native</span>
               <h4>React Native</h4>
               <p>Designing modern, responsive mobile applications featuring integrated third-party APIs.</p>
             </div>
@@ -174,6 +200,7 @@
               <line x1="12" y1="22.08" x2="12" y2="12" />
             </svg>
             <div>
+              <span class="card-kicker">stack.automation</span>
               <h4>Automation &amp; Scripting</h4>
               <p>Using Python and API integrations to automate tasks, fetch information, and parse datasets.</p>
             </div>
@@ -188,7 +215,7 @@
     <div class="container">
       <div class="projects-header reveal">
         <div class="section-title">
-          <span class="title-sub">Featured Projects</span>
+          <span class="title-sub">// featured_work</span>
           <h2>My GitHub Work.</h2>
         </div>
         <div class="filter-menu">
@@ -202,7 +229,7 @@
       <div class="projects-grid reveal">
         <div class="project-card cursor-interactive" data-category="web" data-project-id="finance_pro">
           <div class="project-img-wrapper">
-            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'><rect width='100%' height='100%' fill='%230b0b10'/><line x1='100' y1='380' x2='700' y2='380' stroke='rgba(255,255,255,0.05)' stroke-width='2'/><path d='M 100 300 L 220 220 L 340 280 L 460 140 L 580 180 L 700 80' fill='none' stroke='%236366f1' stroke-width='3'/><circle cx='460' cy='140' r='8' fill='%233b82f6' stroke='%23f8fafc' stroke-width='2'/></svg>" alt="FINANCE-PRO Preview">
+            <img src="finance-pro.png" alt="FINANCE-PRO Preview">
             <div class="project-overlay">
               <div class="project-tags">
                 <span class="project-tag">Node.js</span>
@@ -221,7 +248,7 @@
 
         <div class="project-card cursor-interactive" data-category="python" data-project-id="shark_assistant">
           <div class="project-img-wrapper">
-            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'><rect width='100%' height='100%' fill='%230b0b10'/><circle cx='400' cy='250' r='100' fill='none' stroke='%233b82f6' stroke-width='2' stroke-dasharray='10 5'/><path d='M 350 250 Q 400 150 450 250 T 550 250' fill='none' stroke='%236366f1' stroke-width='3'/><circle cx='400' cy='250' r='10' fill='%236366f1'/></svg>" alt="Shark Voice Assistant Preview">
+            <img src="shark-assistant.png" alt="Shark Voice Assistant Preview">
             <div class="project-overlay">
               <div class="project-tags">
                 <span class="project-tag">Python</span>
@@ -239,7 +266,7 @@
 
         <div class="project-card cursor-interactive" data-category="web" data-project-id="qr_library">
           <div class="project-img-wrapper">
-            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'><rect width='100%' height='100%' fill='%230b0b10'/><rect x='300' y='150' width='200' height='200' rx='10' fill='none' stroke='%236366f1' stroke-width='2'/><rect x='340' y='190' width='40' height='40' fill='%233b82f6'/><rect x='420' y='190' width='40' height='40' fill='%23f8fafc'/><rect x='340' y='270' width='40' height='40' fill='%23f8fafc'/><rect x='420' y='270' width='40' height='40' fill='%236366f1'/></svg>" alt="QR Library Management System Preview">
+            <img src="library-system.png" alt="QR Library Management System Preview">
             <div class="project-overlay">
               <div class="project-tags">
                 <span class="project-tag">Node.js</span>
@@ -258,7 +285,7 @@
 
         <div class="project-card cursor-interactive" data-category="other" data-project-id="profile_repo">
           <div class="project-img-wrapper">
-            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'><rect width='100%' height='100%' fill='%230b0b10'/><path d='M 350 200 L 450 200 L 450 300 L 350 300 Z' fill='none' stroke='%236366f1' stroke-width='1.5'/><circle cx='400' cy='250' r='5' fill='%233b82f6'/></svg>" alt="ZEESHANSIDDIQUIgit Profile Hub Preview">
+            <img src="zeeshangit.png",<svg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'><rect width='100%' height='100%' fill='%230b0b10'/><path d='M 350 200 L 450 200 L 450 300 L 350 300 Z' fill='none' stroke='%236366f1' stroke-width='1.5'/><circle cx='400' cy='250' r='5' fill='%233b82f6'/></svg>" alt="ZEESHANSIDDIQUIgit Profile Hub Preview">
             <div class="project-overlay">
               <div class="project-tags">
                 <span class="project-tag">Markdown</span>
@@ -268,6 +295,7 @@
             </div>
           </div>
           <div class="project-info">
+            
             <h3>ZEESHANSIDDIQUIgit</h3>
             <p>Your open-source personal hub containing active markdown statistics, automation workflow tokens, active repository listings, and profile metadata configurations.</p>
             <span class="project-link">Read Details <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span>
@@ -281,7 +309,7 @@
   <section id="experience" class="experience">
     <div class="container">
       <div class="section-title reveal">
-        <span class="title-sub">Academic Path</span>
+        <span class="title-sub">// education_log</span>
         <h2>Education Timeline.</h2>
       </div>
       <div class="timeline reveal">
@@ -321,7 +349,7 @@
   <section id="skills" class="skills">
     <div class="container">
       <div class="section-title reveal">
-        <span class="title-sub">Technical Depth</span>
+        <span class="title-sub">// skill_matrix</span>
         <h2>My Skillset.</h2>
       </div>
       <div class="skills-grid reveal">
@@ -367,7 +395,7 @@
   <section id="contact" class="contact">
     <div class="container">
       <div class="section-title reveal">
-        <span class="title-sub">Say Hello</span>
+        <span class="title-sub">// contact_init</span>
         <h2>Contact Me.</h2>
       </div>
       <div class="contact-grid">
@@ -382,7 +410,7 @@
             </div>
             <div class="contact-card-info">
               <h4>Write an Email</h4>
-              <p>mzeeshancs8990@gmail.com</p>
+              <p>zeeshansiddiquioffice@gmail.com</p>
             </div>
           </div>
           <div class="contact-card">
@@ -465,7 +493,7 @@
   <!-- Modal -->
   <div class="modal-overlay" id="project-modal">
     <div class="modal-window">
-      <button class="modal-close-btn cursor-interactive" id="modal-close">
+      <button class="modal-close-btn cursor-interactive" id="modal-close" aria-label="Close project details">
         <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
       <img src="" alt="Project Hero Image" class="modal-hero-img" id="modal-img">
