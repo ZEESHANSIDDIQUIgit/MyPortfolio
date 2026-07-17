@@ -53,7 +53,7 @@ const projectData = {
     tech: "Markdown, GitHub Actions, Git Workflows",
     duration: "2 Weeks",
     link: "https://github.com/ZEESHANSIDDIQUIgit/ZEESHANSIDDIQUIgit",
-    img: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'><rect width='100%' height='100%' fill='%230b0b10'/><path d='M 350 200 L 450 200 L 450 300 L 350 300 Z' fill='none' stroke='%236366f1' stroke-width='1.5'/><circle cx='400' cy='250' r='5' fill='%233b82f6'/></svg>",
+    img: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'><rect width='100%' height='100%' fill='%23100c07'/><path d='M 350 200 L 450 200 L 450 300 L 350 300 Z' fill='none' stroke='%23D4AF37' stroke-width='1.5'/><circle cx='400' cy='250' r='5' fill='%23F2CC5C'/></svg>",
     desc: [
       "Your open-source personal hub containing active markdown statistics, automation workflow tokens, active repository listings, and profile metadata configurations.",
       "Used to host your main profile README visual elements, presenting your developer bio, programming languages, database structures, and links to your active socials.",
@@ -115,8 +115,8 @@ if (!isTouchDevice() && !reduceMotion) {
       const alpha = (1 - t) * 0.35;
       const size = (1 - t) * (isHovering ? 5 : 3.5);
       const grad = cursorCtx.createRadialGradient(trail[i].x, trail[i].y, 0, trail[i].x, trail[i].y, size);
-      grad.addColorStop(0, `rgba(99,102,241,${alpha})`);
-      grad.addColorStop(1, `rgba(99,102,241,0)`);
+      grad.addColorStop(0, `rgba(212,175,55,${alpha})`);
+      grad.addColorStop(1, `rgba(212,175,55,0)`);
       cursorCtx.beginPath();
       cursorCtx.arc(trail[i].x, trail[i].y, size, 0, Math.PI * 2);
       cursorCtx.fillStyle = grad;
@@ -132,7 +132,7 @@ if (!isTouchDevice() && !reduceMotion) {
     cursorCtx.rotate(time);
     cursorCtx.beginPath();
     cursorCtx.arc(0, 0, ringRadius, 0, Math.PI * 1.7);
-    cursorCtx.strokeStyle = `rgba(99,102,241,${ringAlpha})`;
+    cursorCtx.strokeStyle = `rgba(212,175,55,${ringAlpha})`;
     cursorCtx.lineWidth = isHovering ? 2 : 1.5;
     cursorCtx.lineCap = "round";
     cursorCtx.stroke();
@@ -143,15 +143,15 @@ if (!isTouchDevice() && !reduceMotion) {
     cursorCtx.rotate(-time * 0.6);
     cursorCtx.beginPath();
     cursorCtx.arc(0, 0, ringRadius, 0, Math.PI * 0.6);
-    cursorCtx.strokeStyle = `rgba(165,180,252,${ringAlpha * 0.5})`;
+    cursorCtx.strokeStyle = `rgba(242,204,92,${ringAlpha * 0.5})`;
     cursorCtx.lineWidth = 1;
     cursorCtx.lineCap = "round";
     cursorCtx.stroke();
     cursorCtx.restore();
 
     const glow = cursorCtx.createRadialGradient(ring.x, ring.y, 0, ring.x, ring.y, ringRadius + 10);
-    glow.addColorStop(0, `rgba(99,102,241,${isHovering ? 0.12 : 0.06})`);
-    glow.addColorStop(1, "rgba(99,102,241,0)");
+    glow.addColorStop(0, `rgba(212,175,55,${isHovering ? 0.12 : 0.06})`);
+    glow.addColorStop(1, "rgba(212,175,55,0)");
     cursorCtx.beginPath();
     cursorCtx.arc(ring.x, ring.y, ringRadius + 10, 0, Math.PI * 2);
     cursorCtx.fillStyle = glow;
@@ -159,8 +159,8 @@ if (!isTouchDevice() && !reduceMotion) {
 
     const dotGrad = cursorCtx.createRadialGradient(cur.x, cur.y, 0, cur.x, cur.y, isHovering ? 5 : 3);
     dotGrad.addColorStop(0, "rgba(255,255,255,1)");
-    dotGrad.addColorStop(0.4, "rgba(165,180,252,0.9)");
-    dotGrad.addColorStop(1, "rgba(99,102,241,0)");
+    dotGrad.addColorStop(0.4, "rgba(245,214,122,0.9)");
+    dotGrad.addColorStop(1, "rgba(212,175,55,0)");
     cursorCtx.beginPath();
     cursorCtx.arc(cur.x, cur.y, isHovering ? 5 : 3, 0, Math.PI * 2);
     cursorCtx.fillStyle = dotGrad;
@@ -240,7 +240,7 @@ class Particle {
   draw() {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(99, 102, 241, ${this.opacity})`;
+    ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`;
     ctx.fill();
   }
 }
@@ -263,7 +263,7 @@ function handleParticles() {
       if (distance < connectionDistance) {
         const opacity = (1 - distance / connectionDistance) * 0.08;
         ctx.beginPath();
-        ctx.strokeStyle = `rgba(99, 102, 241, ${opacity})`;
+        ctx.strokeStyle = `rgba(212, 175, 55, ${opacity})`;
         ctx.lineWidth = 0.8;
         ctx.moveTo(particles[i].x, particles[i].y);
         ctx.lineTo(particles[j].x, particles[j].y);
@@ -312,7 +312,7 @@ const revealObserver = new IntersectionObserver((entries) => {
     if (entry.isIntersecting) {
       entry.target.classList.add("reveal-active");
       if (entry.target.classList.contains("skills-grid")) animateSkills();
-      if (entry.target.classList.contains("timeline")) animateTimelineGlow();
+      if (entry.target.classList.contains("timeline")) animateTimelineGlow(entry.target);
     }
   });
 }, { threshold: 0.15 });
@@ -320,12 +320,13 @@ revealElements.forEach(el => revealObserver.observe(el));
 
 /* 
    ------------------------------------------------------------------------
-   4. TIMELINE GLOW
+   4. TIMELINE GLOW — works for any number of .timeline blocks on the page
    ------------------------------------------------------------------------
 */
-function animateTimelineGlow() {
-  const glowLine = document.getElementById("timeline-glow");
-  const timelineItems = document.querySelectorAll(".timeline-item");
+function animateTimelineGlow(timelineEl) {
+  const glowLine = timelineEl.querySelector(".timeline-glow-line");
+  const timelineItems = timelineEl.querySelectorAll(".timeline-item");
+  if (!glowLine) return;
   setTimeout(() => {
     glowLine.style.height = "100%";
     timelineItems.forEach((item, index) => {
