@@ -8,6 +8,19 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
 
 // Project Data Store for Modals
 const projectData = {
+  ecommerce_dashboard: {
+    title: "E-Commerce Sales Analytics",
+    category: "Power BI Analytics Dashboard",
+    tech: "Power BI, Power Query, DAX, Excel",
+    duration: "3 Weeks",
+    link: "https://github.com/ZEESHANSIDDIQUIgit/E-Commerce-Sales-Analytics-PowerBI",
+    img: "images/ecommerce-dashboard.png",
+    desc: [
+      "A 4-page interactive Power BI dashboard built from a 700+ row raw e-commerce dataset, covering sales, customer, product, and fulfillment performance in a single connected report.",
+      "Diagnosed and resolved 6+ distinct data-quality issues in Power Query across 16 columns, including inconsistent text casing, mixed date formats, currency-formatted price strings, duplicate records, and null placeholders, ensuring accurate downstream reporting.",
+      "Engineered 6+ DAX measures (Revenue, Total Orders, Average Order Value, Total Customers) to drive dynamic KPI cards and cross-filtered visuals, and designed a custom navigation home page linking all four analytical views into a single click."
+    ]
+  },
   finance_pro: {
     title: "FINANCE-PRO",
     category: "Full-Stack Web Application",
@@ -45,6 +58,19 @@ const projectData = {
       "A full-stack, QR-code based library management system featuring student self-issue/return workflows and real-time administrative metrics.",
       "Integrates with dynamic QR APIs to generate barcodes for books and student library passes, enabling quick scanning for issuing and returning assets.",
       "The loan tracker calculates return latency fees automatically based on customizable date thresholds, updating record logs inside a relational MySQL schema."
+    ]
+  },
+  netflix_analysis: {
+    title: "Netflix Data Analysis",
+    category: "Python Data Analysis & Visualization",
+    tech: "Python, Pandas, NumPy, Matplotlib",
+    duration: "2 Weeks",
+    link: "https://github.com/ZEESHANSIDDIQUIgit/Netflix-Data-Analysis-Visualization",
+    img: "images/netflix-analysis.png",
+    desc: [
+      "An exploratory data analysis of 8,000+ Netflix titles using Python and Pandas, cleaning and preparing categorical and numerical fields for downstream analysis.",
+      "Applied 10+ Pandas techniques, including grouping, filtering, aggregation, sorting, string manipulation, and type conversion, to surface trends across content type, ratings, and release timing.",
+      "Produced 6 Matplotlib visualizations covering content type distribution, ratings, movie durations, release trends, and country-level content, then published the complete analysis on GitHub."
     ]
   },
   profile_repo: {
@@ -550,7 +576,7 @@ if (terminalLogEl) {
   const logLines = [
     "npm run build",
     "compiled successfully in 842ms",
-    "fetching repos... 4 active",
+    "fetching repos... 6 active",
     "status: open_to_work",
     "loading AI/ML module..."
   ];

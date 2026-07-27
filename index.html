@@ -125,7 +125,7 @@
           <div class="console-panel" data-panel="status">
             <p class="card-role">// Live Status</p>
             <pre class="card-desc"><span class="code-kw">{</span>
-  <span class="code-key">"repos"</span>: <span class="code-num">4</span>,
+  <span class="code-key">"repos"</span>: <span class="code-num">6</span>,
   <span class="code-key">"graduation"</span>: <span class="code-num">2028</span>,
   <span class="code-key">"university"</span>: <span class="code-str">"SSUET"</span>,
   <span class="code-key">"focus"</span>: <span class="code-str">"full-stack + AI/ML"</span>
@@ -139,7 +139,7 @@
 
           <div class="card-bottom">
             <div class="stat-item">
-              <span class="stat-num glow-text">4</span>
+              <span class="stat-num glow-text">6</span>
               <span class="stat-lbl">Active Repos</span>
             </div>
             <div class="stat-item">
@@ -206,6 +206,18 @@
           </div>
           <div class="info-card glass-panel">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10" />
+              <line x1="12" y1="20" x2="12" y2="4" />
+              <line x1="6" y1="20" x2="6" y2="14" />
+            </svg>
+            <div>
+              <span class="card-kicker">stack.data</span>
+              <h4>Data Analytics</h4>
+              <p>Turning raw datasets into interactive Power BI dashboards and Python/Pandas analyses, from data cleaning to DAX measures and visualizations.</p>
+            </div>
+          </div>
+          <div class="info-card glass-panel">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
               <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
               <line x1="12" y1="22.08" x2="12" y2="12" />
@@ -238,6 +250,25 @@
       </div>
 
       <div class="projects-grid reveal">
+        <div class="project-card cursor-interactive" data-category="other" data-project-id="ecommerce_dashboard">
+          <div class="project-img-wrapper">
+            <img src="ecommerce-dashboard.png" alt="E-Commerce Sales Analytics Power BI Dashboard Preview">
+            <div class="project-overlay">
+              <div class="project-tags">
+                <span class="project-tag">Power BI</span>
+                <span class="project-tag">Power Query</span>
+                <span class="project-tag">DAX</span>
+                <span class="project-tag">Excel</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>E-Commerce Sales Analytics</h3>
+            <p>A 4-page interactive Power BI dashboard built from a 700+ row raw e-commerce dataset, covering sales, customer, product, and fulfillment performance. Includes 6+ custom DAX measures, a cleaned Power Query pipeline resolving data-quality issues across 16 columns, and a custom navigation home page linking every view.</p>
+            <span class="project-link">Read Details <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span>
+          </div>
+        </div>
+
         <div class="project-card cursor-interactive" data-category="web" data-project-id="finance_pro">
           <div class="project-img-wrapper">
             <img src="finance-pro.png" alt="FINANCE-PRO Preview">
@@ -290,6 +321,25 @@
           <div class="project-info">
             <h3>QR Library System</h3>
             <p>A full-stack, QR-code based library management system featuring student self-issue/return workflows, an active loan tracking dashboard with real-time fine calculation, and administrative metrics control panels.</p>
+            <span class="project-link">Read Details <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span>
+          </div>
+        </div>
+
+        <div class="project-card cursor-interactive" data-category="python" data-project-id="netflix_analysis">
+          <div class="project-img-wrapper">
+            <img src="netflix-analysis.png" alt="Netflix Data Analysis and Visualization Preview">
+            <div class="project-overlay">
+              <div class="project-tags">
+                <span class="project-tag">Python</span>
+                <span class="project-tag">Pandas</span>
+                <span class="project-tag">Matplotlib</span>
+                <span class="project-tag">EDA</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>Netflix Data Analysis</h3>
+            <p>An exploratory data analysis of 8,000+ Netflix titles using Python and Pandas, applying 10+ data-wrangling techniques and producing 6 Matplotlib visualizations covering content type, ratings, movie durations, release trends, and country-level distribution.</p>
             <span class="project-link">Read Details <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span>
           </div>
         </div>
@@ -430,6 +480,23 @@
             </div>
             <div class="skill-bar-wrapper">
               <div class="skill-info"><span class="skill-name">MySQL &amp; Database Design</span><span class="skill-percent" data-target="80">0%</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="80%"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="skills-category glass-panel" style="padding: 3rem;">
+          <h3>Data Analytics</h3>
+          <div class="skills-list">
+            <div class="skill-bar-wrapper">
+              <div class="skill-info"><span class="skill-name">Power BI (Power Query, DAX)</span><span class="skill-percent" data-target="85">0%</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85%"></div></div>
+            </div>
+            <div class="skill-bar-wrapper">
+              <div class="skill-info"><span class="skill-name">Python (Pandas, NumPy, Matplotlib)</span><span class="skill-percent" data-target="85">0%</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85%"></div></div>
+            </div>
+            <div class="skill-bar-wrapper">
+              <div class="skill-info"><span class="skill-name">Excel &amp; SQL</span><span class="skill-percent" data-target="80">0%</span></div>
               <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="80%"></div></div>
             </div>
           </div>
