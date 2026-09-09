@@ -11,9 +11,10 @@ Personal portfolio website of **Muhammad Zeeshan Siddiqui** — CS Student at SS
 - Animated hero section with typewriter effect
 - Custom canvas cursor & ambient particle background (desktop)
 - Smooth scroll-reveal animations
-- Filterable project showcase with detail modals
-- Animated education timeline
-- Animated skill proficiency bars
+- Filterable project showcase (All / Web Dev / Python / Other) with detail modals
+- 6 featured projects spanning full-stack web apps, Python automation, and data analytics (Power BI dashboards, exploratory data analysis)
+- Animated work experience & education timelines
+- Animated skill proficiency bars across Development, Data Analytics, and Frameworks & Concepts
 - Fully functional contact form (powered by Formspree)
 - Fully responsive — optimized for mobile, tablet, and desktop
 
@@ -34,9 +35,23 @@ Personal portfolio website of **Muhammad Zeeshan Siddiqui** — CS Student at SS
 .
 ├── index.html      # Main markup
 ├── style.css       # Styling & responsive layout
-├── script.js       # Interactivity, animations, form handling
+├── script.js       # Interactivity, animations, project data, form handling
+├── images/         # Project preview & modal images
 └── README.md
 ```
+
+---
+
+## 📁 Featured Projects
+
+| Project | Category | Stack |
+|---|---|---|
+| E-Commerce Sales Analytics | Data Analytics | Power BI, Power Query, DAX, Excel |
+| FINANCE-PRO | Web Dev | Node.js, Express.js, MySQL |
+| "Shark" Voice Assistant | Python | Python, SpeechRecognition, APIs |
+| QR Library Management System | Web Dev | Node.js, Express.js, MySQL, QR API |
+| Netflix Data Analysis | Python | Python, Pandas, NumPy, Matplotlib |
+| ZEESHANSIDDIQUIgit Hub | Other | Markdown, GitHub Actions |
 
 ---
 
@@ -47,12 +62,10 @@ Personal portfolio website of **Muhammad Zeeshan Siddiqui** — CS Student at SS
    git clone https://github.com/ZEESHANSIDDIQUIgit/your-repo-name.git
    cd your-repo-name
    ```
-
 2. Open `index.html` directly in your browser, or serve it locally:
    ```bash
    npx serve .
    ```
-
 3. To enable the contact form, replace the Formspree endpoint in `index.html`:
    ```html
    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" ...>
