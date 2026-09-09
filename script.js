@@ -13,25 +13,25 @@ const projectData = {
     category: "Power BI Analytics Dashboard",
     tech: "Power BI, Power Query, DAX, Excel",
     duration: "3 Weeks",
-    link: "https://github.com/ZEESHANSIDDIQUIgit/E-Commerce-Sales-Analytics-PowerBI",
-    img: "images/ecommerce-dashboard.png",
+    link: "https://github.com/ZEESHANSIDDIQUIgit/Ecommerce-Sales-Analytics-powerbi",
+    img: "img/ecommerce-dashboard.png",
     desc: [
       "A 4-page interactive Power BI dashboard built from a 700+ row raw e-commerce dataset, covering sales, customer, product, and fulfillment performance in a single connected report.",
-      "Diagnosed and resolved 6+ distinct data-quality issues in Power Query across 16 columns, including inconsistent text casing, mixed date formats, currency-formatted price strings, duplicate records, and null placeholders, ensuring accurate downstream reporting.",
-      "Engineered 6+ DAX measures (Revenue, Total Orders, Average Order Value, Total Customers) to drive dynamic KPI cards and cross-filtered visuals, and designed a custom navigation home page linking all four analytical views into a single click."
+      "Diagnosed and resolved 6+ distinct data-quality issues in Power Query across 16 columns, including inconsistent text casing, mixed date formats, currency-formatted price strings, duplicate records, and null placeholders.",
+      "Engineered 6+ DAX measures (Revenue, Total Orders, Average Order Value, Total Customers) and designed a custom navigation home page linking all four analytical views."
     ]
   },
   finance_pro: {
     title: "FINANCE-PRO",
     category: "Full-Stack Web Application",
-    tech: "Node.js, Express.js, MySQL, Javascript, HTML5/CSS",
+    tech: "Node.js, Express.js, MySQL, HTML5/CSS",
     duration: "5 Weeks",
     link: "https://github.com/ZEESHANSIDDIQUIgit/FINACNEPRO-FINANCE_MANAGEMENT-SYSTEM",
-    img: "images/finance-pro.png",
+    img: "img/finance-pro.png",
     desc: [
       "FinancePro is a full-stack finance tracking application designed to help users budget, monitor expenses, and manage active balance sheets with a secure MySQL database.",
-      "Built with a focus on data integrity, the Express.js server processes records securely using parametrized queries. The system provides immediate balance tallies based on transactions.",
-      "The layout incorporates dynamic cards highlighting active accounts, customized categories (e.g. utilities, dining, study), and linear graphs tracing weekly savings trends."
+      "Built with a focus on data integrity, the Express.js server processes records securely using parametrized queries.",
+      "The layout incorporates dynamic cards highlighting active accounts, customized categories, and linear graphs tracing weekly savings trends."
     ]
   },
   shark_assistant: {
@@ -39,25 +39,25 @@ const projectData = {
     category: "Python Voice Automation",
     tech: "Python, SpeechRecognition, Pyttsx3, Web APIs",
     duration: "4 Weeks",
-    link: "https://github.com/ZEESHANSIDDIQUIgit/Basic-Voice-Assistant-",
-    img: "images/shark-assistant.png",
+    link: "https://github.com/ZEESHANSIDDIQUIgit/SHARK-Basic-Voice-Assistant-",
+    img: "img/shark-assistant.png",
     desc: [
-      "A smart voice-driven assistant built with Python. Features speech recognition inputs, system action automations, online web scraping triggers, and integrations with climate and news APIs.",
-      "Named 'SHARK', this assistant utilizes offline pyttsx3 speech synthetics to talk back, delivering jokes, reading current news highlights, or listing active calendar events.",
-      "Through modular Python scripts, users can configure custom automation macros such as opening custom websites, searching browser items, or sending automated notifications."
+      "A smart voice-driven assistant built with Python featuring speech recognition, system automations, and integrations with climate and news APIs.",
+      "Named 'SHARK', it uses offline pyttsx3 speech synthesis to talk back, deliver jokes, and read current news.",
+      "Modular Python scripts allow custom automation macros such as opening websites or searching the browser."
     ]
   },
   qr_library: {
     title: "QR Based Library Management",
     category: "Full-Stack Library System",
-    tech: "Node.js, Express.js, MySQL, QR API, Javascript",
+    tech: "Node.js, Express.js, MySQL, QR API",
     duration: "6 Weeks",
     link: "https://github.com/ZEESHANSIDDIQUIgit/QR-Based-Library-Management-System",
-    img: "images/library-system.png",
+    img: "img/library-system.png",
     desc: [
       "A full-stack, QR-code based library management system featuring student self-issue/return workflows and real-time administrative metrics.",
-      "Integrates with dynamic QR APIs to generate barcodes for books and student library passes, enabling quick scanning for issuing and returning assets.",
-      "The loan tracker calculates return latency fees automatically based on customizable date thresholds, updating record logs inside a relational MySQL schema."
+      "Integrates with dynamic QR APIs to generate barcodes for books and student passes.",
+      "The loan tracker calculates return latency fees automatically based on customizable date thresholds."
     ]
   },
   netflix_analysis: {
@@ -65,32 +65,57 @@ const projectData = {
     category: "Python Data Analysis & Visualization",
     tech: "Python, Pandas, NumPy, Matplotlib",
     duration: "2 Weeks",
-    link: "https://github.com/ZEESHANSIDDIQUIgit/Netflix-Data-Analysis-Visualization",
-    img: "images/netflix-analysis.png",
+    link: "https://github.com/ZEESHANSIDDIQUIgit/Netflix-Data-Visualization-Pandas_-_Matplotlib",
+    img: "img/netflix-analysis.png",
     desc: [
-      "An exploratory data analysis of 8,000+ Netflix titles using Python and Pandas, cleaning and preparing categorical and numerical fields for downstream analysis.",
-      "Applied 10+ Pandas techniques, including grouping, filtering, aggregation, sorting, string manipulation, and type conversion, to surface trends across content type, ratings, and release timing.",
-      "Produced 6 Matplotlib visualizations covering content type distribution, ratings, movie durations, release trends, and country-level content, then published the complete analysis on GitHub."
+      "An exploratory data analysis of 8,000+ Netflix titles using Python and Pandas.",
+      "Applied 10+ Pandas techniques including grouping, filtering, aggregation, and string manipulation.",
+      "Produced 6 Matplotlib visualizations covering content type, ratings, durations, release trends, and country distribution."
+    ]
+  },
+  customer_segmentation: {
+    title: "Customer Segmentation",
+    category: "Machine Learning / Clustering",
+    tech: "Python, Scikit-learn, K-Means, Pandas",
+    duration: "3 Weeks",
+    link: "https://github.com/ZEESHANSIDDIQUIgit/Customer-Segmentation-Project",
+    img: "img/customer-segmentation.png",
+    desc: [
+      "Unsupervised machine learning project that segments customers using K-Means clustering.",
+      "Includes full exploratory data analysis, feature engineering, and clear visualization of distinct customer groups.",
+      "Useful for targeted marketing and understanding customer behavior patterns."
+    ]
+  },
+  powerco_churn: {
+    title: "PowerCo Customer Churn Analysis",
+    category: "Data Science / Churn Prediction",
+    tech: "Python, Pandas, Feature Engineering, EDA",
+    duration: "2 Weeks",
+    link: "https://github.com/ZEESHANSIDDIQUIgit/PowerCo-customer-churn-analysis",
+    img: "img/powerco-churn.png",
+    desc: [
+      "BCG X Data Science Job Simulation project analyzing churn drivers for a simulated energy utility client.",
+      "Performed extensive EDA and engineered price-sensitivity features.",
+      "Delivered actionable insights for customer retention strategies."
     ]
   },
   profile_repo: {
     title: "ZEESHANSIDDIQUIgit Hub",
     category: "GitHub Profile Repository",
-    tech: "Markdown, GitHub Actions, Git Workflows",
-    duration: "2 Weeks",
+    tech: "Markdown, GitHub Actions, Git",
+    duration: "Ongoing",
     link: "https://github.com/ZEESHANSIDDIQUIgit/ZEESHANSIDDIQUIgit",
-    img: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'><rect width='100%' height='100%' fill='%23100c07'/><path d='M 350 200 L 450 200 L 450 300 L 350 300 Z' fill='none' stroke='%23D4AF37' stroke-width='1.5'/><circle cx='400' cy='250' r='5' fill='%23F2CC5C'/></svg>",
+    img: "img/zeeshangit.png",
     desc: [
-      "Your open-source personal hub containing active markdown statistics, automation workflow tokens, active repository listings, and profile metadata configurations.",
-      "Used to host your main profile README visual elements, presenting your developer bio, programming languages, database structures, and links to your active socials.",
-      "Maintains clean git history logs and operates as the entry point for your open source profile."
+      "Personal open-source hub containing profile README, statistics, and repository listings.",
+      "Serves as the central entry point for all your public work on GitHub."
     ]
   }
 };
 
 /* 
    ------------------------------------------------------------------------
-   1. PREMIUM CANVAS CURSOR — desktop only, skipped if reduced motion is preferred
+   1. PREMIUM CANVAS CURSOR
    ------------------------------------------------------------------------
 */
 const isTouchDevice = () => window.matchMedia("(hover: none) and (pointer: coarse)").matches;
@@ -204,8 +229,6 @@ if (!isTouchDevice() && !reduceMotion) {
     });
   }
   initCursorInteractions();
-
-  // Re-expose so filter section can call it
   window.initCursorInteractions = initCursorInteractions;
 } else {
   cursorCanvas.style.display = "none";
@@ -213,8 +236,7 @@ if (!isTouchDevice() && !reduceMotion) {
 
 /* 
    ------------------------------------------------------------------------
-   2. AMBIENT PARTICLES — animated normally, drawn once statically if the
-      user prefers reduced motion
+   2. AMBIENT PARTICLES
    ------------------------------------------------------------------------
 */
 const canvas = document.getElementById("ambient-canvas");
@@ -291,7 +313,7 @@ function handleParticles() {
         ctx.beginPath();
         ctx.strokeStyle = `rgba(212, 175, 55, ${opacity})`;
         ctx.lineWidth = 0.8;
-        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.moveTo(particles[i].x, particles[j].x);
         ctx.lineTo(particles[j].x, particles[j].y);
         ctx.stroke();
       }
@@ -346,7 +368,7 @@ revealElements.forEach(el => revealObserver.observe(el));
 
 /* 
    ------------------------------------------------------------------------
-   4. TIMELINE GLOW — works for any number of .timeline blocks on the page
+   4. TIMELINE GLOW
    ------------------------------------------------------------------------
 */
 function animateTimelineGlow(timelineEl) {
@@ -460,7 +482,6 @@ projectCards.forEach(card => {
     });
     document.body.classList.add("modal-open");
     modalOverlay.classList.add("active");
-    // Scroll modal to top
     modalOverlay.querySelector(".modal-window").scrollTop = 0;
   });
 });
@@ -478,7 +499,7 @@ window.addEventListener("keydown", (e) => {
 
 /* 
    ------------------------------------------------------------------------
-   8. CONTACT FORM — submits to Formspree (real email delivery)
+   8. CONTACT FORM
    ------------------------------------------------------------------------
 */
 const contactForm = document.getElementById("contact-form");
@@ -521,7 +542,7 @@ contactForm.addEventListener("submit", async (e) => {
 
 /* 
    ------------------------------------------------------------------------
-   9. TYPEWRITER (hero headline)
+   9. TYPEWRITER
    ------------------------------------------------------------------------
 */
 const typedEl = document.getElementById("typed-text");
@@ -554,7 +575,7 @@ if (typedEl) {
 
 /* 
    ------------------------------------------------------------------------
-   10. DEV CONSOLE — hero signature element: tab switching + live terminal log
+   10. DEV CONSOLE
    ------------------------------------------------------------------------
 */
 const consoleTabs = document.querySelectorAll(".console-tab");
@@ -576,7 +597,7 @@ if (terminalLogEl) {
   const logLines = [
     "npm run build",
     "compiled successfully in 842ms",
-    "fetching repos... 6 active",
+    "fetching repos... 9 active",
     "status: open_to_work",
     "loading AI/ML module..."
   ];
@@ -611,7 +632,7 @@ if (terminalLogEl) {
 
 /* 
    ------------------------------------------------------------------------
-   11. HAMBURGER MENU — single state flag, no race conditions
+   11. HAMBURGER MENU
    ------------------------------------------------------------------------
 */
 const hamburger = document.getElementById("hamburger");
