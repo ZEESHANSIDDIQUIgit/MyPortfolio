@@ -86,6 +86,20 @@ const projectData = {
       "Useful for targeted marketing and understanding customer behavior patterns."
     ]
   },
+    salifort_churn: {
+    title: "Salifort Employee Churn Analysis",
+    category: "Machine Learning / HR Analytics",
+    tech: "Python, Pandas, scikit-learn, Logistic Regression, Decision Tree, Random Forest",
+    duration: "Capstone Project",
+    link: "https://github.com/ZEESHANSIDDIQUIgit/Salifort-Motors-Employee_Churn_Analysis",
+    img: "img/salifort-employee-churn.jpg",
+    desc: [
+      "Predicted whether employees at Salifort Motors are likely to leave, using logistic regression, decision tree, and random forest models in Python.",
+      "Ran EDA and feature engineering, then compared the models on held-out test data. The best model, a random forest, reached 96% accuracy and a 0.89 F1 score.",
+      "Found that overwork, project load, and tenure are the main drivers of turnover, and turned those findings into retention recommendations for HR leadership."
+    ]
+  },
+
   powerco_churn: {
     title: "PowerCo Customer Churn Analysis",
     category: "Data Science / Churn Prediction",

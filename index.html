@@ -232,8 +232,7 @@
       </div>
     </div>
   </section>
-
-  <!-- Projects Section -->
+<!-- Projects Section -->
   <section id="projects" class="projects">
     <div class="container">
       <div class="projects-header reveal">
@@ -249,9 +248,53 @@
         </div>
       </div>
 
+      <!-- ONE grid wrapper for ALL cards -->
       <div class="projects-grid reveal">
 
-        <!-- 1. E-Commerce -->
+        <!-- 0. Salifort Employee Churn -->
+        <div class="project-card cursor-interactive" data-category="python" data-project-id="salifort_churn">
+          <div class="project-img-wrapper">
+            <img src="img/salifort-employee-churn.jpg" alt="Salifort Employee Churn Analysis Preview" onerror="this.style.opacity='0.3'">
+            <div class="project-overlay">
+              <div class="project-tags">
+                <span class="project-tag">Python</span>
+                <span class="project-tag">Pandas</span>
+                <span class="project-tag">EDA</span>
+                <span class="project-tag">scikit-learn</span>
+                <span class="project-tag">Decision Tree</span>
+                <span class="project-tag">Model Evaluation</span>
+                <span class="project-tag">Feature Engineering</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>Salifort Employee Churn Analysis</h3>
+            <p>Predicted employee turnover using logistic regression, decision tree, and random forest models in Python. The best model, a random forest, reached 96% accuracy and 0.89 F1 on held-out test data. It found that overwork, project load, and tenure drive turnover, and I turned that into retention recommendations for HR leadership.</p>
+            <span class="project-link">Read Details <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span>
+          </div>
+        </div>
+
+        <!-- 1. PowerCo Churn -->
+        <div class="project-card cursor-interactive" data-category="python" data-project-id="powerco_churn">
+          <div class="project-img-wrapper">
+            <img src="img/powerco-churn.png" alt="PowerCo Customer Churn Analysis Preview" onerror="this.style.opacity='0.3'">
+            <div class="project-overlay">
+              <div class="project-tags">
+                <span class="project-tag">Python</span>
+                <span class="project-tag">Pandas</span>
+                <span class="project-tag">EDA</span>
+                <span class="project-tag">Feature Engineering</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>PowerCo Customer Churn</h3>
+            <p>BCG X Data Science simulation analyzing churn drivers, performing EDA, and engineering price-sensitivity features.</p>
+            <span class="project-link">Read Details <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span>
+          </div>
+        </div>
+
+        <!-- 2. E-Commerce -->
         <div class="project-card cursor-interactive" data-category="other" data-project-id="ecommerce_dashboard">
           <div class="project-img-wrapper">
             <img src="img/ecommerce-dashboard.png" alt="E-Commerce Sales Analytics Power BI Dashboard Preview">
@@ -271,7 +314,7 @@
           </div>
         </div>
 
-        <!-- 2. Finance Pro -->
+        <!-- 3. Finance Pro -->
         <div class="project-card cursor-interactive" data-category="web" data-project-id="finance_pro">
           <div class="project-img-wrapper">
             <img src="img/finance-pro.png" alt="FINANCE-PRO Preview">
@@ -287,25 +330,6 @@
           <div class="project-info">
             <h3>FINANCE-PRO</h3>
             <p>Full-stack web application to track income, expenses, and monthly budgets with real-time visualization and data integrity.</p>
-            <span class="project-link">Read Details <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span>
-          </div>
-        </div>
-
-        <!-- 3. Shark Assistant -->
-        <div class="project-card cursor-interactive" data-category="python" data-project-id="shark_assistant">
-          <div class="project-img-wrapper">
-            <img src="img/shark-assistant.png" alt="Shark Voice Assistant Preview">
-            <div class="project-overlay">
-              <div class="project-tags">
-                <span class="project-tag">Python</span>
-                <span class="project-tag">SpeechRecognition</span>
-                <span class="project-tag">APIs</span>
-              </div>
-            </div>
-          </div>
-          <div class="project-info">
-            <h3>"Shark" Assistant</h3>
-            <p>A virtual assistant that opens websites, tells jokes, fetches news, and runs climate widgets using Python.</p>
             <span class="project-link">Read Details <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span>
           </div>
         </div>
@@ -350,7 +374,7 @@
           </div>
         </div>
 
-        <!-- 6. Customer Segmentation (NEW) -->
+        <!-- 6. Customer Segmentation -->
         <div class="project-card cursor-interactive" data-category="python" data-project-id="customer_segmentation">
           <div class="project-img-wrapper">
             <img src="img/customer-segmentation.png" alt="Customer Segmentation Project Preview" onerror="this.style.opacity='0.3'">
@@ -370,22 +394,21 @@
           </div>
         </div>
 
-        <!-- 7. PowerCo Churn (NEW) -->
-        <div class="project-card cursor-interactive" data-category="python" data-project-id="powerco_churn">
+        <!-- 7. Shark Assistant -->
+        <div class="project-card cursor-interactive" data-category="python" data-project-id="shark_assistant">
           <div class="project-img-wrapper">
-            <img src="img/powerco-churn.png" alt="PowerCo Customer Churn Analysis Preview" onerror="this.style.opacity='0.3'">
+            <img src="img/shark-assistant.png" alt="Shark Voice Assistant Preview">
             <div class="project-overlay">
               <div class="project-tags">
                 <span class="project-tag">Python</span>
-                <span class="project-tag">Pandas</span>
-                <span class="project-tag">EDA</span>
-                <span class="project-tag">Feature Engineering</span>
+                <span class="project-tag">SpeechRecognition</span>
+                <span class="project-tag">APIs</span>
               </div>
             </div>
           </div>
           <div class="project-info">
-            <h3>PowerCo Customer Churn</h3>
-            <p>BCG X Data Science simulation analyzing churn drivers, performing EDA, and engineering price-sensitivity features.</p>
+            <h3>"Shark" Assistant</h3>
+            <p>A virtual assistant that opens websites, tells jokes, fetches news, and runs climate widgets using Python.</p>
             <span class="project-link">Read Details <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span>
           </div>
         </div>
@@ -409,8 +432,8 @@
           </div>
         </div>
 
-      </div>
-    </div>
+      </div><!-- /projects-grid -->
+    </div><!-- /container -->
   </section>
 
   <!-- Experience Section -->
@@ -619,7 +642,8 @@
           </div>
         </div>
 
-        <form class="contact-form glass-panel reveal" id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" autocomplete="off">
+        <form class="contact-form glass-panel reveal" id="contact-form" action="https://formspree.io/f/xvkawkrw" method="POST" autocomplete="off">
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
           <div class="form-row">
             <div class="form-group">
               <input type="text" id="name" name="name" class="form-input cursor-interactive" placeholder=" " required>
